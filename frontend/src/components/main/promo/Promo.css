@@ -1,5 +1,5 @@
 .promo {
-  background-image: url('../../image/background-promo.png');
+  background-image: url('../../../image/background-promo.png');
   height: 524px;
   display: flex;
   justify-content: center;
@@ -14,9 +14,12 @@
 }
 
 .promo__logo {
-  background-image: url('../../image/promo__logo.png');
+  background-image: url('../../../image/promo__logo.png');
   width: 320px;
   height: 320px;
+  position: relative;
+  top: -20px;
+  left: -30px;
 }
 
 .promo__title {
@@ -31,4 +34,5 @@
   position: absolute;
   width: 730px;
   height: 116px;
+  top: 48px;
 }

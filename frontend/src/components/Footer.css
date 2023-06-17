@@ -1,6 +1,6 @@
 .footer {
   margin: 0 auto;
-  padding: 80px 70px 20px;
+  padding: 92px 70px 0px;
   max-height: 172px;
   display: flex;
   flex-direction: column;
@@ -15,6 +15,7 @@
   line-height: 16px;
   text-align: center;
   color: #8B8B8B;
+  margin: 0 0 20px;
 }
 
 .footer__container {
@@ -23,7 +24,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
+  padding: 5px 0;
 }
 
 .footer__year {

@@ -1,6 +1,6 @@
 .aboutProject {
   margin: 0 auto;
-  padding: 110px 70px;
+  padding: 90px 70px;
   background-color: #202020;
   display: flex;
   flex-direction: column;
@@ -26,12 +26,15 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 70px 0 110px;
-  gap: 20px;
+  padding: 49px 0 106px;
+  gap: 40px;
 }
 
 .aboutProject__topic-stage {
   width: 50%;
+  display: flex;
+  flex-direction: column;
+
 }
 
 .aboutProject__topic-name {
@@ -42,6 +45,7 @@
   line-height: 24px;
   letter-spacing: -0.04em;
   color: #FFFFFF;
+  text-align: start;
 }
 
 .aboutProject__topic-text {
@@ -51,6 +55,8 @@
   font-size: 14px;
   line-height: 20px;
   color: #FFFFFF;
+  text-align: start;
+  margin: 5px 0;
 }
 
 .aboutProject__line-container {
@@ -59,6 +65,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  
 }
 
 .aboutProject__line-20 {
@@ -74,6 +81,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
 }
 
 .aboutProject__line_green {

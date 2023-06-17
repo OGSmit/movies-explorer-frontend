@@ -8,7 +8,7 @@ function Header() {
       <img alt='логотип' src={logo} />
       <div className='header__container'>
         <a href='#' className='header__button header__button_signIn'>Регистрация</a>
-        <button className='header__button header__button_enter'>Войти</button>
+        <a href='#' className='header__button header__button_enter'>Войти</a>
       </div>
     </header>
   )

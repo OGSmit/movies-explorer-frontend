@@ -1,6 +1,6 @@
 .techs {
   margin: 0 auto;
-  padding: 100px 70px;
+  padding: 85px 70px;
   background-color: #272727;
   display: flex;
   flex-direction: column;
@@ -33,11 +33,11 @@
   font-style: normal;
   font-weight: 400;
   font-size: 50px;
-  line-height: 58px;
+  line-height: 56px;
   text-align: center;
   letter-spacing: -0.04em;
   color: #FFFFFF;
-  margin: 90px 0 0;
+  margin: 89px 0 0;
 }
 
 .techs__info {

@@ -3,13 +3,28 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 70px ;
+  padding: 18px 70px;
   background-color: #073042;
 }
 
 .header__container {
   display: flex;
   gap: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__button_signIn {
+  text-decoration: none;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  color: #FFFFFF;
 }
 
 .header__button_enter {
@@ -17,4 +32,8 @@
   border-radius: 3px;
   width: 76px;
   height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
 }
