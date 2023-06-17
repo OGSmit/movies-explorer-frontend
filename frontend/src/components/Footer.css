@@ -8,8 +8,13 @@
 }
 
 .footer__description {
-  color: #8B8B8B;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
   text-align: center;
+  color: #8B8B8B;
 }
 
 .footer__container {
@@ -22,8 +27,12 @@
 }
 
 .footer__year {
-  margin: 0;
-  color: white;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #FFFFFF;
 }
 
 .footer__nav {
@@ -33,5 +42,12 @@
 }
 
 .footer__navLink {
-  color: white;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: right;
+  color: #FFFFFF;
+  text-decoration: none;
 }

@@ -1,15 +1,15 @@
 import './App.css';
 import Footer from './Footer';
-// import Student from './Student';
-import Technology from './Technology';
-import About from './About';
+// import AboutMe from './AboutMe';
+import Techs from './Techs';
+import Promo from './Promo';
 
 
 function App() {
   return (
     <div className="App">
-      <About />
-      <Technology />
+      <Promo />
+      <Techs />
       <Footer />
     </div>
   );
