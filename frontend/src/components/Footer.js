@@ -3,7 +3,7 @@ import './Footer.css';
 function Footer() {
 
   return (
-    <div className="footer">
+    <footer className="footer">
       <p className="footer__description">Учебный проект Яндекс.Практикум х BeatFilm.</p>
       <div className='footer__container'>
         <p className="footer__year">© 2023</p>
@@ -12,7 +12,7 @@ function Footer() {
           <a href="https://github.com/OGSmit" className="footer__navLink">Github</a>
         </nav>
       </div>
-    </div>
+    </footer>
   )
 }
 

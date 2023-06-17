@@ -1,4 +1,4 @@
-.promo {
+.aboutProject {
   margin: 0 auto;
   padding: 110px 70px;
   background-color: #202020;
@@ -8,7 +8,7 @@
   box-sizing: border-box;
 }
 
-.promo__description {
+.aboutProject__description {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
@@ -19,7 +19,7 @@
   align-self: start;
 }
 
-.promo__container {
+.aboutProject__container {
   display: flex;
   flex-direction: row;
   border-top: solid #424242;
@@ -30,11 +30,11 @@
   gap: 20px;
 }
 
-.promo__topic-stage {
+.aboutProject__topic-stage {
   width: 50%;
 }
 
-.promo__topic-name {
+.aboutProject__topic-name {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
@@ -44,7 +44,7 @@
   color: #FFFFFF;
 }
 
-.promo__topic-text {
+.aboutProject__topic-text {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
@@ -53,7 +53,7 @@
   color: #FFFFFF;
 }
 
-.promo__line-container {
+.aboutProject__line-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -61,32 +61,32 @@
   width: 100%;
 }
 
-.promo__line-20 {
+.aboutProject__line-20 {
   width: 20%;
 }
 
-.promo__line-80 {
+.aboutProject__line-80 {
   width: 80%;
 }
 
-.promo__line {
+.aboutProject__line {
   height: 36px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.promo__line_green {
+.aboutProject__line_green {
   background-color: #3DDC84;
   color: black;
 }
 
-.promo__line_gray {
+.aboutProject__line_gray {
   background-color: #303030;
   color: white;
 }
 
-.promo__line-name {
+.aboutProject__line-name {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 500;

@@ -1,0 +1,26 @@
+.navTab {
+  padding: 24px 70px;
+  background-color: #272727;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.navTab__list {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+}
+
+.navTab__item {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  text-decoration-line: underline;
+  color: #FFFFFF;
+}
