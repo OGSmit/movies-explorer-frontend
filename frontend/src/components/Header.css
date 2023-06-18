@@ -33,7 +33,41 @@
   width: 76px;
   height: 32px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   text-decoration: none;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #000000;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 18px 30px;
+  }
+}
+
+@media (max-width: 460px) {
+  .header {
+    padding: 18px 14px;
+  }
+
+  .header__button_enter {
+    width: 54px;
+    height: 26px;
+    font-size: 10px;
+    line-height: 16px;
+  }
+
+  .header__container {
+    gap: 14px;
+  }
+
+  .header__button_signIn {
+    font-size: 10px;
+    line-height: 16px;
+  }
 }

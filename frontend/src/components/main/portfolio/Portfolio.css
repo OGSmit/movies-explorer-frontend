@@ -54,3 +54,43 @@
   width: 19px;
   height: 19px;
 }
+
+@media (max-width: 768px) {
+  .portfolio {
+    padding: 90px 50px 95px;
+  }
+
+  .portfolio__link {
+    font-size: 28px;
+    line-height: 50px;
+  }
+
+  .portfolio__icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 460px) {
+  .portfolio {
+    padding: 70px 15px 75px;
+  }
+
+  .portfolio__description {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 21px;
+  }
+
+  .portfolio__link {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .portfolio__icon {
+    width: 10px;
+    height: 10px;
+    margin-top: -4px;
+    padding-right: 2px;
+  }
+}

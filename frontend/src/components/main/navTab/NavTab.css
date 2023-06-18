@@ -24,3 +24,19 @@
   text-decoration-line: underline;
   color: #FFFFFF;
 }
+
+@media (max-width: 460px) {
+  .navTab {
+    padding: 24px 50px;
+  }
+
+  .navTab__list {
+    gap: 25px;
+  }
+
+  .navTab__item {
+    font-size: 11px;
+    line-height: 16px;
+    max-height: 17px;
+  }
+}
