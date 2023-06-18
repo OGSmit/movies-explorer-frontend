@@ -1,16 +1,19 @@
 import './App.css';
-// import Header from './Header';
 // import Main from './main/Main';
 // import Footer from './Footer';
-import NotFound from './notFound/NotFound';
+// import NotFound from './notFound/NotFound';
+import Movies from './movies/Movies'
 
 function App() {
   return (
     <div className="App">
-      {/* <Header />
+      {/*
       <Main />
       <Footer /> */}
-      <NotFound />
+
+      {/* <NotFound /> */}
+
+      <Movies />
     </div>
   );
 }

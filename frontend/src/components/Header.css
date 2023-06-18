@@ -3,71 +3,50 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  background-color: #202020;
   padding: 18px 70px;
-  background-color: #073042;
 }
 
-.header__container {
+.header__movie-nav {
   display: flex;
-  gap: 30px;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+  gap: 20px;
 }
 
-.header__button_signIn {
-  text-decoration: none;
+.header__link-movie {
   font-family: 'Inter';
   font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  display: flex;
-  align-items: center;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
   text-align: right;
   color: #FFFFFF;
+  text-decoration: none;
 }
 
-.header__button_enter {
-  background: #3DDC84;
-  border-radius: 3px;
-  width: 76px;
-  height: 32px;
+.header__account-info {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  text-decoration: none;
+  gap: 20px;
+}
+
+.header__account-name {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  color: #000000;
+  font-size: 13px;
+  line-height: 12px;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-@media (max-width: 768px) {
-  .header {
-    padding: 18px 30px;
-  }
-}
-
-@media (max-width: 460px) {
-  .header {
-    padding: 18px 14px;
-  }
-
-  .header__button_enter {
-    width: 54px;
-    height: 26px;
-    font-size: 10px;
-    line-height: 16px;
-  }
-
-  .header__container {
-    gap: 14px;
-  }
-
-  .header__button_signIn {
-    font-size: 10px;
-    line-height: 16px;
-  }
+.header__account-logo {
+  width: 26px;
+  height: 26px;
+  background-color: #313131;
+  border-radius: 50px;
+  background-image: url(../image/header__account-logo.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
