@@ -67,7 +67,6 @@
   .footer__description {
     font-size: 12px;
     line-height: 15px;
-
   }
 
   .footer__container {
@@ -91,5 +90,16 @@
     line-height: 15px;
     color: #8B8B8B;
     margin-top: 30px;
+  }
+}
+
+@media (max-width: 460px) {
+  .footer {
+    padding: 92px 0px 0px;
+  }
+
+  .footer__container {
+    flex-direction: column-reverse;
+    padding-top: 30px;
   }
 }

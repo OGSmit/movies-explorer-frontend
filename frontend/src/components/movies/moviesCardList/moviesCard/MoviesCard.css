@@ -4,13 +4,15 @@
   justify-content: space-between;
   background-color: #2F2F2F;
   width: 100%;
+  padding: 6px 6px 6px 22px;
+  box-sizing: border-box;
 }
 
 .moviesCard__container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding:22px 0 0 22px ;
+  padding: 16px 0;
   height: 100%;
 }
 
@@ -42,11 +44,53 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  background-size: cover;
   border: 0;
   background-color: #2F2F2F;
+  margin-top: 21px;
 }
+
 
 .moviesCard__poster {
   width: 220px;
   height: 122px;
+}
+
+@media (max-width:460px) {
+  .moviesCard {
+    flex-direction: column-reverse;
+    padding: 0;
+  }
+
+  .moviesCard__poster {
+    width: 100%;
+    max-height: 168px;
+    height: 100%;
+  }
+
+  .moviesCard__title {
+    font-size: 12px;
+    line-height: 15px;
+    min-width: 258px;
+    text-align: start;
+  }
+
+  .moviesCard__container {
+    position: relative;
+    padding: 14px 12px 2px;
+    height: 48px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .moviesCard__like {
+    order: 2;
+    margin-top: 2px;
+  }
+
+  .moviesCard__duration {
+    margin-top: 8px;
+    max-width: 228px;
+    order: 3;
+  }
 }

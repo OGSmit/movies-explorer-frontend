@@ -9,8 +9,9 @@ function MoviesCardList() {
       <MoviesCard />
       <MoviesCard />
       <MoviesCard />
+      <MoviesCard />
       <div className='movieCardList__more'>
-        <button className='movieCardList__button-more'>Еще</button>
+        <button type='button' className='movieCardList__button-more'>Еще</button>
       </div>
     </div>
   )

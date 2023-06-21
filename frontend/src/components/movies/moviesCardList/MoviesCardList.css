@@ -5,7 +5,7 @@
   gap: 40px;
   justify-content: center;
   background-color: #202020;
-  padding: 20px 70px;
+  padding: 48px 70px;
 }
 
 .movieCardList__more {
@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 50px 0 80px;
+  padding: 20px 0 19px;
 }
 
 .movieCardList__button-more {
@@ -35,4 +35,30 @@
   border: 0;
   width: 320px;
   height: 36px;
+}
+
+@media (max-width: 768px) {
+  .movieCardList {
+    padding: 40px 30px;
+  }
+
+  .movieCardList__more {
+    padding: 50px 0 62px;
+  }
+}
+
+@media (max-width: 460px) {
+  .movieCardList {
+    padding: 5px 10px;
+    gap: 20px;
+  }
+
+  .movieCardList__more {
+    padding: 40px 0 62px;
+  }
+
+  .movieCardList__button-more {
+    width: 240px;
+    margin-top: 10px;
+  }
 }
