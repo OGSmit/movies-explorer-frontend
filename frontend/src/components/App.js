@@ -3,12 +3,13 @@ import './App.css';
 // import Footer from './Footer';
 // import NotFound from './notFound/NotFound';
 // import Movies from './movies/Movies'
-import Profile from '../components/profile/Profile';
+// import Profile from '../components/profile/Profile';
+import Registration from '../components/register/Registration';
 
 function App() {
   return (
     <div className="App">
-      <Profile />
+      <Registration />
     </div>
   );
 }
