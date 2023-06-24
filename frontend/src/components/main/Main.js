@@ -6,6 +6,7 @@ import AboutProject from './aboutProject/AboutProject';
 import NavTab from './navTab/NavTab';
 import Portfolio from './portfolio/Portfolio';
 import Header from './header/Header';
+import Footer from '../Footer';
 
 function Main() {
 
@@ -18,6 +19,7 @@ function Main() {
       <Techs />
       <AboutMe />
       <Portfolio />
+      <Footer />
     </div>
   )
 }

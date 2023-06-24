@@ -50,7 +50,7 @@
 .search-form__checkbox-container {
   display: flex;
   flex-direction: row;
-  align-items: start;
+  align-items: flex-start;
   align-self: flex-start;
   padding-top: 32px;
   gap: 25px;
