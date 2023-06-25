@@ -7,7 +7,7 @@ import NavTab from './navTab/NavTab';
 import Portfolio from './portfolio/Portfolio';
 import Header from './header/Header';
 import Footer from '../Footer';
-
+import Profile from '../../components/profile/Profile'
 function Main() {
 
   return (
@@ -20,6 +20,7 @@ function Main() {
       <AboutMe />
       <Portfolio />
       <Footer />
+      <Profile />
     </div>
   )
 }

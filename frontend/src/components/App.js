@@ -4,6 +4,8 @@ import Main from './main/Main';
 import Movies from './movies/Movies'
 import Registration from '../components/register/Registration';
 import Login from '../components/login/Login';
+import SavedMovies from '../components/savedMovies/SavedMovies';
+import Profile from '../components/profile/Profile'
 
 function App() {
   return (
@@ -16,7 +18,11 @@ function App() {
 
         <Route path='/sign-in' element={<Login />} />
 
-        <Route path="/main" element={ <Movies />} />
+        <Route path='/saved-movies' element={ <SavedMovies />} />
+
+        <Route path='/movies' element={<Movies />} />
+
+        <Route path='/profile' element={<Profile />} />
 
       </Routes>
     </div>

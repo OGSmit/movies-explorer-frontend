@@ -10,7 +10,7 @@ function Movies() {
     <div>
       <Header />
       <SearchForm />
-      <MoviesCardList />
+      <MoviesCardList isNeedMoreButton={true} />
       <Footer />
     </div>
   )

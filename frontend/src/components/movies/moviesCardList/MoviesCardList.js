@@ -1,7 +1,7 @@
 import './MoviesCardList.css'
 import MoviesCard from './moviesCard/MoviesCard'
 
-function MoviesCardList() {
+function MoviesCardList({isNeedMoreButton}) {
 
   return (
     <div className='movieCardList'>
@@ -10,9 +10,9 @@ function MoviesCardList() {
       <MoviesCard />
       <MoviesCard />
       <MoviesCard />
-      <div className='movieCardList__more'>
+      {isNeedMoreButton? <div className='movieCardList__more'>
         <button type='button' className='movieCardList__button-more'>Еще</button>
-      </div>
+      </div> : ''}
     </div>
   )
 }

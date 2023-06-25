@@ -57,7 +57,7 @@
   width: 100%;
   padding-bottom: 7px;
   border-bottom: solid #424242;
-  margin-bottom: 20px;
+  /* margin-bottom: 4px; */
 }
 
 .registration__input:focus {
@@ -107,6 +107,20 @@
   line-height: 17px;
   text-align: center;
   color: #4285F4;
+}
+
+.registration__error {
+  display: inline-block;
+  color: #EE3465;
+  font-size: 10px;
+  text-align: start;
+  min-width: 100%;
+  height: 20px;
+  /* margin-bottom: 4px; */
+}
+
+.registration__error-invisible {
+  display: none;
 }
 
 @media (max-width: 768px) {

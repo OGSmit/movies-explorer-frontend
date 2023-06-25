@@ -103,6 +103,19 @@
   color: #4285F4;
 }
 
+.login__error {
+  display: inline-block;
+  color: #EE3465;
+  font-size: 10px;
+  text-align: start;
+  min-width: 100%;
+  height: 20px;
+}
+
+.login__error-invisible {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .login {
     padding: 232px 30px;
