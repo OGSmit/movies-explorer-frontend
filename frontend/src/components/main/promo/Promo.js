@@ -12,4 +12,5 @@ function Promo() {
   )
 }
 
+// BEM validation done!
 export default Promo;

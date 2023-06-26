@@ -64,7 +64,7 @@
   text-align: start;
 }
 
-.profile__button_submit {
+.profile__button-submit {
   border: 0;
   background-color: #202020;
   font-weight: 400;
@@ -77,7 +77,7 @@
   margin-top: 217px;
 }
 
-.profile__button_exit {
+.profile__button-exit {
   border: 0;
   background-color: #202020;
   font-weight: 500;
@@ -86,6 +86,12 @@
   text-align: center;
   color: #EE3465;
   margin-top: 15px;
+}
+
+.profile__button-submit:hover,
+.profile__button-exit:hover {
+  cursor: pointer;
+  opacity: .7;
 }
 
 .profile__error {

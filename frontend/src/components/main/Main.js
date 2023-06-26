@@ -1,18 +1,20 @@
-import './Main.css'
+import './Main.css';
 import Promo from './promo/Promo';
 import AboutMe from './aboutMe/AboutMe';
 import Techs from './techs/Techs';
 import AboutProject from './aboutProject/AboutProject';
 import NavTab from './navTab/NavTab';
 import Portfolio from './portfolio/Portfolio';
-import Header from './header/Header';
+import HeaderWithoutLogin from './header/Header';
+import HeaderWithLogin from '../Header';
 import Footer from '../Footer';
-import Profile from '../../components/profile/Profile'
-function Main() {
+import Profile from '../../components/profile/Profile';
+
+function Main({ isloggedIn }) {
 
   return (
-    <div>
-      <Header />
+    <section className='main'>
+      {isloggedIn ? <HeaderWithLogin /> : <HeaderWithoutLogin />}
       <Promo />
       <NavTab />
       <AboutProject />
@@ -21,7 +23,7 @@ function Main() {
       <Portfolio />
       <Footer />
       <Profile />
-    </div>
+    </section>
   )
 }
 

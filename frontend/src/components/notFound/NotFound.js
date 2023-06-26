@@ -1,16 +1,24 @@
-import './NotFound.css'
+import { useNavigate } from 'react-router-dom';
+import './NotFound.css';
 
 function NotFound() {
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
 
   return (
-    <div className='not-found'>
+    <section className='not-found'>
       <div className='not-found__container'>
         <h1 className='not-found__title'>404</h1>
         <p className='not-found__description'>Страница не найдена</p>
-        <a href='#' className='not-found__back-link'>Назад</a>
+        <button onClick={handleGoBack} className='not-found__back-link'>Назад</button>
       </div>
-    </div>
-  )
+    </section>
+  );
 }
 
+// BEM validation done!
 export default NotFound;
+

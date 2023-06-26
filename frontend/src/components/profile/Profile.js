@@ -33,7 +33,7 @@ function Profile() {
   }
 
   return (
-    <div className='profile'>
+    <section className='profile'>
       <Header />
       <div className='profile__container'>
         <h2 className='profile__title'>Привет, Виталий!</h2>
@@ -61,12 +61,13 @@ function Profile() {
                    id='profile__input_email'></input>
             <span className={formErrorMessage.email === 'undefined'?  'profile__error-invisible': 'profile__error'}>{formErrorMessage.email || ''}</span>
           </div>
-          <button type='submit' className='profile__button_submit'>Редактировать</button>
+          <button type='submit' className='profile__button-submit'>Редактировать</button>
         </form>
-        <button type='button' className='profile__button_exit'>Выйти из аккаунта</button>
+        <button type='button' className='profile__button-exit'>Выйти из аккаунта</button>
       </div>
-    </div>
+    </section>
   )
 }
 
+// BEM validation done!
 export default Profile;

@@ -1,5 +1,5 @@
 import './MoviesCardList.css'
-import MoviesCard from './moviesCard/MoviesCard'
+import MoviesCard from '../moviesCard/MoviesCard';
 
 function MoviesCardList({isNeedMoreButton}) {
 
@@ -17,4 +17,5 @@ function MoviesCardList({isNeedMoreButton}) {
   )
 }
 
+// BEM validation done!
 export default MoviesCardList;

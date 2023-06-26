@@ -70,6 +70,10 @@
   align-self: flex-start;
 }
 
+.aboutMe__link:hover {
+  opacity: .7;
+}
+
 .aboutMe__avatar {
   border-radius: 10px;
   width: 270px;

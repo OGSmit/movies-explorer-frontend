@@ -32,4 +32,5 @@ function AboutProject() {
   )
 }
 
+// BEM validate done!
 export default AboutProject;

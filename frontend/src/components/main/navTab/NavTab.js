@@ -15,4 +15,5 @@ function NavTab() {
   )
 }
 
+// BEM validation done!
 export default NavTab;

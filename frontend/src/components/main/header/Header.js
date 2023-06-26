@@ -15,4 +15,5 @@ function Header() {
   )
 }
 
+// BEM validate done!
 export default Header;

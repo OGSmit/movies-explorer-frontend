@@ -9,7 +9,7 @@ function Login({ onLogin }) {
   const isFormFieldsValid = !formErrorMessage.email &&
                             !formErrorMessage.passwordform &&
                             formErrorMessage.email == '' &&
-                            formErrorMessage.password == '';;
+                            formErrorMessage.password == '';
 
   function handleChangeEmail(e) {
     const { name, value } = e.target;
@@ -21,7 +21,7 @@ function Login({ onLogin }) {
     setFormErrorMessage({
       ...formErrorMessage,
       [name]: e.target.validationMessage
-    })
+    });
   }
 
   function handleChangePassword(e) {
@@ -34,21 +34,19 @@ function Login({ onLogin }) {
     setFormErrorMessage({
       ...formErrorMessage,
       [name]: e.target.validationMessage
-    })
+    });
   }
-
-  // Загатовка под сабмит
 
   function handleSubmit(e) {
     e.preventDefault();
     const { email, password } = formValue;
-    onLogin(email, password, e)
+    onLogin(email, password, e);
   }
 
   return (
-    <div className='login'>
+    <section className='login'>
       <div className='login__container-top'>
-        <Link to='/' className='header__logo-link'><img className='registartion__logo' alt='логотип' src={logo}></img></Link>
+        <Link to='/' className='login__logo-link'><img className='login__logo' alt='логотип' src={logo}></img></Link>
         <h2 className='login__title'>Рады видеть!</h2>
       </div>
       <div className='login__container-main'>
@@ -77,8 +75,9 @@ function Login({ onLogin }) {
           <Link to='/sign-up' className='login__link-login'>Регистрация</Link>
         </div>
       </div>
-    </div >
+    </section >
   )
 }
 
+// BEM validator done!
 export default Login;

@@ -2,11 +2,12 @@ import './App.css';
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import Main from './main/Main';
-import Movies from './movies/Movies'
+import Movies from './movies/Movies';
 import Registration from '../components/register/Registration';
 import Login from '../components/login/Login';
 import SavedMovies from '../components/savedMovies/SavedMovies';
-import Profile from '../components/profile/Profile'
+import Profile from '../components/profile/Profile';
+import NotFound from './notFound/NotFound';
 import ProtectedRouteElement from './ProtectedRoute';
 import { register, login, tokencheck } from '../utils/Auth';
 
@@ -59,7 +60,7 @@ function App() {
     <div className="App">
       <Routes>
 
-        <Route path='/' element={<Main />} />
+        <Route path='/' element={<Main isloggedIn={isloggedIn} />} />
 
         <Route path='/sign-up' element={<Registration onRegistration={handleRegistration} />} />
 
@@ -71,6 +72,8 @@ function App() {
 
         <Route path='/profile' element={<ProtectedRouteElement loggedIn={isloggedIn} element={Profile} />} />
 
+        <Route path='*' element={<NotFound />} />
+        
       </Routes>
     </div>
   );

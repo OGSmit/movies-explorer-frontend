@@ -1,5 +1,5 @@
 import './MoviesCard.css'
-import tester from '../../../../image/Mylogo.png'
+import tester from '../../../image/Mylogo.png'
 
 function MoviesCard() {
 
@@ -15,4 +15,5 @@ function MoviesCard() {
   )
 }
 
+// BEM validation done!
 export default MoviesCard;
