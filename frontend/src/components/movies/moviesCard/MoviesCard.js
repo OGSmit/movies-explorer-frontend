@@ -1,5 +1,5 @@
 import './MoviesCard.css'
-import tester from '../../../image/Mylogo.png'
+import tester from '../../../image/movieCard__poster.png'
 
 function MoviesCard() {
 

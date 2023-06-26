@@ -8,7 +8,6 @@ import Portfolio from './portfolio/Portfolio';
 import HeaderWithoutLogin from './header/Header';
 import HeaderWithLogin from '../Header';
 import Footer from '../Footer';
-import Profile from '../../components/profile/Profile';
 
 function Main({ isloggedIn }) {
 
@@ -22,7 +21,6 @@ function Main({ isloggedIn }) {
       <AboutMe />
       <Portfolio />
       <Footer />
-      <Profile />
     </section>
   )
 }

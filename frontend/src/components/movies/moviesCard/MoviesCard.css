@@ -50,6 +50,7 @@
 .moviesCard__poster {
   width: 220px;
   height: 122px;
+  object-fit: cover;
 }
 
 @media (max-width:460px) {
