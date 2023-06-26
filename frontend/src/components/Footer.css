@@ -8,8 +8,6 @@
 }
 
 .footer__description {
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
@@ -28,8 +26,6 @@
 }
 
 .footer__year {
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
@@ -43,8 +39,6 @@
 }
 
 .footer__navLink {
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;

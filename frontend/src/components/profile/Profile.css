@@ -10,8 +10,6 @@
 }
 
 .profile__title {
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 500;
   font-size: 24px;
   line-height: 29px;
@@ -45,8 +43,6 @@
 .profile__input {
   background-color: #202020;
   border: 0;
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 400;
   font-size: 11px;
   line-height: 13px;
@@ -60,8 +56,6 @@
 }
 
 .profile__input-label {
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 500;
   font-size: 11px;
   line-height: 13px;
@@ -73,8 +67,6 @@
 .profile__button_submit {
   border: 0;
   background-color: #202020;
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
@@ -88,8 +80,6 @@
 .profile__button_exit {
   border: 0;
   background-color: #202020;
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 500;
   font-size: 13px;
   line-height: 16px;

@@ -19,8 +19,6 @@
 }
 
 .not-found__title {
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 400;
   font-size: 140px;
   line-height: 169px;
@@ -30,8 +28,6 @@
 }
 
 .not-found__description {
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
@@ -41,8 +37,6 @@
 }
 
 .not-found__back-link {
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;

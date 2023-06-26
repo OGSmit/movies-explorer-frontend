@@ -9,8 +9,6 @@
 }
 
 .techs__description {
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 400;
   font-size: 22px;
   line-height: 27px;
@@ -29,8 +27,6 @@
 }
 
 .techs__title {
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 400;
   font-size: 50px;
   line-height: 56px;
@@ -41,8 +37,6 @@
 }
 
 .techs__info {
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
@@ -62,8 +56,6 @@
 
 .techs__item {
   background-color: #303030;
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;

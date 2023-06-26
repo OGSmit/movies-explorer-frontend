@@ -16,8 +16,6 @@
 
 .header__button_signIn {
   text-decoration: none;
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
@@ -36,8 +34,6 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;

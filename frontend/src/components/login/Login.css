@@ -15,7 +15,6 @@
 }
 
 .login__title {
-  font-style: normal;
   font-weight: 500;
   font-size: 24px;
   line-height: 29px;
@@ -32,7 +31,6 @@
 }
 
 .login__label {
-  font-style: normal;
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
@@ -44,7 +42,6 @@
 }
 
 .login__input {
-  font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
@@ -64,7 +61,6 @@
 .login__button-submit {
   background: #4285F4;
   border-radius: 3px;
-  font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
@@ -74,6 +70,19 @@
   width: 100%;
   height: 45px;
   margin-top: 199px;
+}
+
+.login__button-submit[disabled] {
+  opacity: .3;
+}
+
+.login__button-submit[disabled]:hover {
+  cursor: not-allowed;
+}
+
+.login__button-submit:hover {
+  cursor: pointer;
+  opacity: .8;
 }
 
 .login__container-bottom {
@@ -86,7 +95,6 @@
 }
 
 .login__link-description {
-  font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
@@ -95,12 +103,15 @@
 }
 
 .login__link-login {
-  font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
   text-align: center;
   color: #4285F4;
+}
+
+.login__link-login:hover {
+  opacity: .7;
 }
 
 .login__error {

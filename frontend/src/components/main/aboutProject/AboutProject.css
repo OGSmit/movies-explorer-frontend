@@ -9,8 +9,6 @@
 }
 
 .aboutProject__description {
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 400;
   font-size: 22px;
   line-height: 27px;
@@ -37,8 +35,6 @@
 }
 
 .aboutProject__topic-name {
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
@@ -48,8 +44,6 @@
 }
 
 .aboutProject__topic-text {
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
@@ -80,8 +74,6 @@
   justify-content: center;
   align-items: center;
   margin: 0;
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
@@ -99,8 +91,6 @@
 }
 
 .aboutProject__line-name {
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;

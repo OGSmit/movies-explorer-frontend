@@ -19,8 +19,6 @@
 .search-form__input {
   background-color: #202020;
   border: 0;
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 500;
   font-size: 28px;
   line-height: 34px;
@@ -34,8 +32,6 @@
 .search-form__button {
   background-color: #4285F4;
   border-radius: 48px;
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 500;
   font-size: 11px;
   line-height: 18px;
@@ -82,8 +78,6 @@
 }
 
 .search-form__checkbox-description {
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 400;
   font-size: 13px;
   line-height: 18px;
