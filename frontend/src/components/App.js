@@ -10,11 +10,17 @@ import Profile from '../components/profile/Profile';
 import NotFound from './notFound/NotFound';
 import ProtectedRouteElement from './ProtectedRoute';
 import { register, login, tokencheck } from '../utils/Auth';
+import BurgerMenu from './burgerMenu/BurgerMenu';
 
 function App() {
-  const [isloggedIn, setIsloggedIn] = useState(false);
-
   const navigate = useNavigate();
+
+  const [isloggedIn, setIsloggedIn] = useState(false);
+  const [isBurgerOpened, setIsBurgerOpened] = useState(false)
+
+  function handleBurgerOpen() {
+    setIsBurgerOpened(!isBurgerOpened);
+  }
 
   useEffect(() => {
     function handleTokenCheck() {
@@ -60,21 +66,23 @@ function App() {
     <div className="App">
       <Routes>
 
-        <Route path='/' element={<Main isloggedIn={isloggedIn} />} />
+        <Route path='/' element={<Main onBurgerOpened={handleBurgerOpen} isloggedIn={isloggedIn} />} />
 
         <Route path='/sign-up' element={<Registration onRegistration={handleRegistration} />} />
 
         <Route path='/sign-in' element={<Login onLogin={handleLogin} />} />
 
-        <Route path='/saved-movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={SavedMovies} />} />
+        <Route path='/saved-movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={SavedMovies} onBurgerOpened={handleBurgerOpen}/>} />
 
-        <Route path='/movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={Movies} />} />
+        <Route path='/movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={Movies} onBurgerOpened={handleBurgerOpen}/>} />
 
         <Route path='/profile' element={<ProtectedRouteElement loggedIn={isloggedIn} element={Profile} />} />
 
         <Route path='*' element={<NotFound />} />
-        
+
       </Routes>
+
+      <BurgerMenu isOpened={isBurgerOpened} onClose={handleBurgerOpen}/>
     </div>
   );
 }

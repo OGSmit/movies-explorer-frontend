@@ -23,6 +23,15 @@
   text-decoration: none;
 }
 
+.header__link-movie-active {
+  font-weight: 500;
+  line-height: 18px;
+  font-size: 14px;
+  text-align: right;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
 .header__account-info {
   display: flex;
   flex-direction: row;
@@ -71,6 +80,11 @@
 
   .header__movie-nav {
     display: none;
+  }
+
+  .header__link-movie-active {
+    padding-bottom: 8px;
+    border-bottom: solid #000;
   }
 
   .header__account-info {

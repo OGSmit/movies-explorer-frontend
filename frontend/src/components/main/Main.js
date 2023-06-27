@@ -9,11 +9,11 @@ import HeaderWithoutLogin from './header/Header';
 import HeaderWithLogin from '../Header';
 import Footer from '../Footer';
 
-function Main({ isloggedIn }) {
+function Main({ isloggedIn, onBurgerOpened }) {
 
   return (
     <section className='main'>
-      {isloggedIn ? <HeaderWithLogin /> : <HeaderWithoutLogin />}
+      {isloggedIn ? <HeaderWithLogin onBurgerOpened={onBurgerOpened} /> : <HeaderWithoutLogin />}
       <Promo />
       <NavTab />
       <AboutProject />
