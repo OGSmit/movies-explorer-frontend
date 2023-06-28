@@ -9,7 +9,7 @@ function Header({ isloggedIn }) {
 
   const [isBurgerOpened, setIsBurgerOpened] = useState(false)
 
-// заблочил скролл при открытом бургере 
+  // заблочил скролл при открытом бургере 
   useEffect(() => {
     const body = document.querySelector('body');
 
@@ -35,10 +35,10 @@ function Header({ isloggedIn }) {
             <NavLink to='/saved-movies' className={location.pathname === '/saved-movies' ? 'header__link-movie-active' : 'header__link-movie'}>Сохранённые фильмы</NavLink>
           </nav>
           <button onClick={handleBurgerOpening} className='header__burger' type='button'></button>
-          <div className='header__account-info'>
+          <Link to='/profile' className=' header__account-info'>
             <p className='header__account-name'>Аккаунт</p>
-            <Link to='/profile' className='header__account-logo'></Link>
-          </div>
+            <div className='header__account-logo'></div>
+          </Link>
         </header > :
 
         <header className='header'>
