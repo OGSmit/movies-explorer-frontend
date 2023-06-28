@@ -48,11 +48,15 @@
   right: 0;
 }
 
+.search-form__button:hover {
+  opacity: .8;
+  cursor: pointer;
+}
+
 .search-form__checkbox-container {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  align-self: flex-start;
   padding-top: 32px;
   gap: 25px;
 }
@@ -96,9 +100,13 @@
     padding: 78px 30px;
   }
 
-  .search-form__input {
-    width: 90%;
+  .search-form__checkbox-container {
+    flex-direction: row-reverse;
+    position: absolute;
+    right: 12px;
+    top: 40px;
   }
+
 }
 
 @media (max-width: 460px) {
@@ -110,6 +118,7 @@
   .search-form__input {
     font-size: 18px;
     line-height: 22px;
+    padding-bottom: 15px;
   }
 
   .search-form__button {
@@ -128,5 +137,6 @@
     padding-top: 38px;
     padding-right: 10px;
     gap: 14px;
+    position: inherit;
   }
 }

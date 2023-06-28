@@ -14,7 +14,7 @@
   color: #FFFFFF;
   text-align: start;
   margin-bottom: 0;
-  padding-bottom: 22px;
+  padding-bottom: 20px;
   border-bottom: solid #424242;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .aboutMe__name {
-  margin: 67px 0 0;
+  margin: 65px 0 0;
   font-weight: 400;
   font-size: 50px;
   line-height: 58px;
@@ -78,7 +78,7 @@
   border-radius: 10px;
   width: 270px;
   height: 327px;
-  margin-top: 67px;
+  margin-top: 65px;
   object-fit: cover;
 }
 
@@ -139,7 +139,7 @@
 
   .aboutMe {
     margin: 0 auto;
-    padding: 69px 15px 0;
+    padding: 68px 15px 0;
   }
 
   .aboutMe__avatar {

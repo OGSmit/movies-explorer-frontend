@@ -41,7 +41,7 @@ function Header({ isloggedIn }) {
           </Link>
         </header > :
 
-        <header className='header'>
+        <header className='header header_unlogged'>
           <Link to='/' className='header__logo-link'><img alt='логотип' src={logo} /></Link>
           <div className='header__container'>
             <Link to='/sign-up' className='header__button header__button_signIn'>Регистрация</Link>
