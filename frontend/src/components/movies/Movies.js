@@ -4,11 +4,11 @@ import SearchForm from './searchForm/SearchForm'
 import MoviesCardList from './moviesCardList/MoviesCardList'
 import Footer from '../Footer'
 
-function Movies({ onBurgerOpened }) {
+function Movies({ isloggedIn }) {
 
   return (
     <div>
-      <Header onBurgerOpened={onBurgerOpened} />
+      <Header isloggedIn={isloggedIn} />
       <SearchForm />
       <MoviesCardList isNeedMoreButton={true} />
       <Footer />

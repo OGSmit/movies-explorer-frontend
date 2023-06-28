@@ -5,15 +5,14 @@ import Techs from './techs/Techs';
 import AboutProject from './aboutProject/AboutProject';
 import NavTab from './navTab/NavTab';
 import Portfolio from './portfolio/Portfolio';
-import HeaderWithoutLogin from './header/Header';
-import HeaderWithLogin from '../Header';
+import Header from '../Header';
 import Footer from '../Footer';
 
-function Main({ isloggedIn, onBurgerOpened }) {
+function Main({ isloggedIn }) {
 
   return (
     <section className='main'>
-      {isloggedIn ? <HeaderWithLogin onBurgerOpened={onBurgerOpened} /> : <HeaderWithoutLogin />}
+      <Header isloggedIn={isloggedIn} />
       <Promo />
       <NavTab />
       <AboutProject />

@@ -1,6 +1,7 @@
 import './App.css';
-import { Route, Routes, useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
+import { Route, Routes, useNavigate } from "react-router-dom";
+import { register, login, tokencheck } from '../utils/Auth';
 import Main from './main/Main';
 import Movies from './movies/Movies';
 import Registration from '../components/register/Registration';
@@ -9,18 +10,11 @@ import SavedMovies from '../components/savedMovies/SavedMovies';
 import Profile from '../components/profile/Profile';
 import NotFound from './notFound/NotFound';
 import ProtectedRouteElement from './ProtectedRoute';
-import { register, login, tokencheck } from '../utils/Auth';
-import BurgerMenu from './burgerMenu/BurgerMenu';
 
 function App() {
   const navigate = useNavigate();
 
   const [isloggedIn, setIsloggedIn] = useState(false);
-  const [isBurgerOpened, setIsBurgerOpened] = useState(false)
-
-  function handleBurgerOpen() {
-    setIsBurgerOpened(!isBurgerOpened);
-  }
 
   useEffect(() => {
     function handleTokenCheck() {
@@ -30,7 +24,7 @@ function App() {
           setIsloggedIn(true)
         })
           .then(() => {
-            navigate("/movies", { replace: true })
+            navigate("/", { replace: true })
           })
           .catch(err => console.log(err))
       }
@@ -66,23 +60,22 @@ function App() {
     <div className="App">
       <Routes>
 
-        <Route path='/' element={<Main onBurgerOpened={handleBurgerOpen} isloggedIn={isloggedIn} />} />
+        <Route path='/' element={<Main isloggedIn={isloggedIn} />} />
 
         <Route path='/sign-up' element={<Registration onRegistration={handleRegistration} />} />
 
         <Route path='/sign-in' element={<Login onLogin={handleLogin} />} />
 
-        <Route path='/saved-movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={SavedMovies} onBurgerOpened={handleBurgerOpen}/>} />
+        <Route path='/saved-movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={SavedMovies} isloggedIn={isloggedIn} />} />
 
-        <Route path='/movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={Movies} onBurgerOpened={handleBurgerOpen}/>} />
+        <Route path='/movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={Movies} isloggedIn={isloggedIn} />} />
 
-        <Route path='/profile' element={<ProtectedRouteElement loggedIn={isloggedIn} element={Profile} />} />
+        <Route path='/profile' element={<ProtectedRouteElement loggedIn={isloggedIn} element={Profile} isloggedIn={isloggedIn} />} />
 
         <Route path='*' element={<NotFound />} />
 
       </Routes>
 
-      <BurgerMenu isOpened={isBurgerOpened} onClose={handleBurgerOpen}/>
     </div>
   );
 }

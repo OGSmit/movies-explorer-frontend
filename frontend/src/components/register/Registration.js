@@ -59,44 +59,44 @@ function Registration({ onRegistration }) {
   }
 
   return (
-    <section class='registration'>
-      <div class='registration__container-top'>
-        <Link to='/' class='registration__logo-link'><img class='registration__logo' alt='логотип' src={logo}></img></Link>
-        <h2 class='registration__title'>Добро пожаловать!</h2>
+    <section className='registration'>
+      <div className='registration__container-top'>
+        <Link to='/' className='registration__logo-link'><img className='registration__logo' alt='логотип' src={logo}></img></Link>
+        <h2 className='registration__title'>Добро пожаловать!</h2>
       </div>
-      <div class='registration__container-main'>
-        <form class='registration__form' onSubmit={handleSubmit}>
-          <label class='registration__label' htmlFor='registration__input_name'>Имя</label>
-          <input class='registration__input registration__input_name'
+      <div className='registration__container-main'>
+        <form className='registration__form' onSubmit={handleSubmit}>
+          <label className='registration__label' htmlFor='registration__input_name'>Имя</label>
+          <input className='registration__input registration__input_name'
             id='registration__input_name'
             name='name'
             required
             minLength={2}
             type="text"
             onChange={handleChangeName}></input>
-          <span class={formErrorMessage.name === 'undefined' ? 'registration__error-invisible' : 'registration__error'}>{formErrorMessage.name || ''}</span>
-          <label class='registration__label' htmlFor='registration__input_email'>E-mail</label>
-          <input class='registration__input registration__input_email'
+          <span className={formErrorMessage.name === 'undefined' ? 'registration__error-invisible' : 'registration__error'}>{formErrorMessage.name || ''}</span>
+          <label className='registration__label' htmlFor='registration__input_email'>E-mail</label>
+          <input className='registration__input registration__input_email'
             id='registration__input_email'
             name='email'
             required
             type="email"
             onChange={handleChangeEmail}></input>
-          <span class={formErrorMessage.email === 'undefined' ? 'registration__error-invisible' : 'registration__error'}>{formErrorMessage.email || ''}</span>
-          <label class='registration__label' htmlFor='registration__input_password'>Пароль</label>
-          <input class='registration__input registration__input_password'
+          <span className={formErrorMessage.email === 'undefined' ? 'registration__error-invisible' : 'registration__error'}>{formErrorMessage.email || ''}</span>
+          <label className='registration__label' htmlFor='registration__input_password'>Пароль</label>
+          <input className='registration__input registration__input_password'
             id='registration__input_password'
             name='password'
             required
             minLength={8}
             type="password"
             onChange={handleChangePassword}></input>
-          <span class={formErrorMessage.password === 'undefined' ? 'registration__error-invisible' : 'registration__error'}>{formErrorMessage.password || ''}</span>
-          <button disabled={!isFormFieldsValid} class='registration__button-submit' >Зарегистрироваться</button>
+          <span className={formErrorMessage.password === 'undefined' ? 'registration__error-invisible' : 'registration__error'}>{formErrorMessage.password || ''}</span>
+          <button disabled={!isFormFieldsValid} className='registration__button-submit' >Зарегистрироваться</button>
         </form>
-        <div class='registration__container-bottom'>
-          <p class='registration__link-description'>Уже зарегистрированы?</p>
-          <Link to='/sign-in' class='registration__link-login'>Войти</Link>
+        <div className='registration__container-bottom'>
+          <p className='registration__link-description'>Уже зарегистрированы?</p>
+          <Link to='/sign-in' className='registration__link-login'>Войти</Link>
         </div>
       </div>
     </section>
