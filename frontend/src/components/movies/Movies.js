@@ -7,12 +7,14 @@ import Footer from '../Footer'
 function Movies({ isloggedIn }) {
 
   return (
-    <div>
+    <>
       <Header isloggedIn={isloggedIn} />
-      <SearchForm />
-      <MoviesCardList isNeedMoreButton={true} />
+      <main>
+        <SearchForm />
+        <MoviesCardList isNeedMoreButton={true} />
+      </main>
       <Footer />
-    </div>
+    </>
   )
 }
 

@@ -11,16 +11,18 @@ import Footer from '../Footer';
 function Main({ isloggedIn }) {
 
   return (
-    <section className='main'>
+    <>
       <Header isloggedIn={isloggedIn} />
-      <Promo />
-      <NavTab />
-      <AboutProject />
-      <Techs />
-      <AboutMe />
-      <Portfolio />
+      <main className='main'>
+        <Promo />
+        <NavTab />
+        <AboutProject />
+        <Techs />
+        <AboutMe />
+        <Portfolio />
+      </main>
       <Footer />
-    </section>
+    </>
   )
 }
 

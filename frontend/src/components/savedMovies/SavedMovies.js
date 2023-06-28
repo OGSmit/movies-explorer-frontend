@@ -7,12 +7,14 @@ import Footer from '../Footer'
 function SavedMovies({ isloggedIn }) {
 
   return (
-    <div className='savedMovies'>
+    <>
       <Header isloggedIn={isloggedIn} />
-      <SearchForm />
-      <MoviesCardList isNeedMoreButton={false} />
+      <main className='savedMovies'>
+        <SearchForm />
+        <MoviesCardList isNeedMoreButton={false} />
+      </main>
       <Footer />
-    </div>
+    </>
   )
 }
 
