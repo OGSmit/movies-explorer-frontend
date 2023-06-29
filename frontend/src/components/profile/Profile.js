@@ -1,8 +1,11 @@
 import './Profile.css'
 import Header from '../Header';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Profile({ isloggedIn }) {
+  const navigate = useNavigate();
+
   const [formValue, setFormValue] = useState({});
   const [formErrorMessage, setFormErrorMessage] = useState({});
 
@@ -30,6 +33,10 @@ function Profile({ isloggedIn }) {
       ...formErrorMessage,
       [name]: e.target.validationMessage
     })
+  }
+
+  const goExit = () => {
+    navigate('/')
   }
 
   return (
@@ -65,7 +72,7 @@ function Profile({ isloggedIn }) {
             </div>
             <button type='submit' className='profile__button-submit'>Редактировать</button>
           </form>
-          <button type='button' className='profile__button-exit'>Выйти из аккаунта</button>
+          <button onClick={goExit} type='button' className='profile__button-exit'>Выйти из аккаунта</button>
         </div>
       </main>
     </>
