@@ -1,4 +1,6 @@
 .footer {
+  width: 100%;
+  box-sizing: border-box;
   margin: 0 auto;
   padding: 92px 70px 0px;
   max-height: 172px;
