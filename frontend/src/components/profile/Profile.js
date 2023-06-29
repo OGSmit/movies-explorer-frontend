@@ -45,10 +45,11 @@ function Profile() {
                    type='text'
                    required
                    minLength={2}
+                   maxLength={18}
                    className='profile__input profile__input_name'
                    placeholder='Виталий'
                    id='profile__input_name'></input>
-            <span className={formErrorMessage.name === 'undefined'?  'profile__error-invisible': 'profile__error'}>{formErrorMessage.name || ''}</span>
+            <span className={formErrorMessage.name === 'undefined'? 'profile__error-invisible': 'profile__error'}>{formErrorMessage.name || ''}</span>
           </div>
           <div className='profile__container-input'>
             <label className='profile__input-label' for='profile__input_email'>E-mail</label>

@@ -65,6 +65,7 @@ function Login({ onLogin }) {
             name='password'
             required
             minLength={8}
+            maxLength={24}
             type="password"
             onChange={handleChangePassword}></input>
           <span className={formErrorMessage.password === 'undefined' ? 'login__error-invisible' : 'login__error'}>{formErrorMessage.password || ''}</span>

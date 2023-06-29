@@ -72,6 +72,7 @@ function Registration({ onRegistration }) {
             name='name'
             required
             minLength={2}
+            maxLength={18}
             type="text"
             onChange={handleChangeName}></input>
           <span className={formErrorMessage.name === 'undefined' ? 'registration__error-invisible' : 'registration__error'}>{formErrorMessage.name || ''}</span>
@@ -89,6 +90,7 @@ function Registration({ onRegistration }) {
             name='password'
             required
             minLength={8}
+            maxLength={24}
             type="password"
             onChange={handleChangePassword}></input>
           <span className={formErrorMessage.password === 'undefined' ? 'registration__error-invisible' : 'registration__error'}>{formErrorMessage.password || ''}</span>
