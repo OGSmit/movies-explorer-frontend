@@ -7,7 +7,7 @@ function AboutMe() {
   return (
     <Element name="aboutMe" className="section-wrapper">
       <section className="aboutMe" id="aboutMe">
-        <p className="aboutMe__description">Студент</p>
+        <h2 className="aboutMe__description">Студент</h2>
         <div className="aboutMe__container">
           <div className="aboutMe__container-bio">
             <h2 className="aboutMe__name">Виталий</h2>

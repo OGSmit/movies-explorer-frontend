@@ -6,9 +6,9 @@ function Techs() {
   return (
     <Element name="techs" className="section-wapper">
       <section className="techs" id='techs'>
-        <p className='techs__description'>Технологии</p>
+        <h2 className='techs__description'>Технологии</h2>
         <div className='techs__container'>
-          <h2 className='techs__title'>7 технологий</h2>
+          <h3 className='techs__title'>7 технологий</h3>
           <p className='techs__info'>На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
           <div className='techs__collection'>
             <span className='techs__item'>HTML</span>
