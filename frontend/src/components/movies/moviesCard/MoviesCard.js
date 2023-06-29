@@ -1,16 +1,16 @@
 import './MoviesCard.css'
-import tester from '../../../image/movieCard__poster.png'
+import defaultImage from '../../../image/movieCard__poster.png'
 
-function MoviesCard() {
+function MoviesCard({ name, poster }) {
 
   return (
     <div className='moviesCard'>
       <div className='moviesCard__container'>
-        <h2 className='moviesCard__title'>33 слова о дизайне</h2>
+        <h2 className='moviesCard__title'>{name}</h2>
         <p className='moviesCard__duration'>1ч 42м</p>
         <button className='moviesCard__like'></button>
       </div>
-      <img alt='постер фильма' className='moviesCard__poster' src={tester}></img>
+      <img alt={`постер к фильму ${name}`} className='moviesCard__poster' src={poster || defaultImage}></img>
     </div>
   )
 }
