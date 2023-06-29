@@ -33,7 +33,7 @@
   text-align: center;
   letter-spacing: -0.04em;
   color: #FFFFFF;
-  margin: 89px 0 0;
+  margin: 92px 0 0;
 }
 
 .techs__info {
@@ -50,10 +50,12 @@
 .techs__collection {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
 .techs__item {
@@ -79,11 +81,7 @@
   }
 
   .techs__title {
-    margin: 79px 0 0;
-  }
-
-  .techs__collection {
-    flex-wrap: wrap;
+    margin: 82px 0 0;
   }
 
   .techs__info {
@@ -101,7 +99,7 @@
 @media (max-width: 460px) {
 
   .techs {
-    padding: 55px 18px;
+    padding: 60px 18px;
   }
 
   .techs__collection {

@@ -16,6 +16,7 @@
   margin-bottom: 0;
   padding-bottom: 20px;
   border-bottom: solid #424242;
+  margin: 22px 0 0;
 }
 
 .aboutMe__container {
@@ -32,7 +33,7 @@
 }
 
 .aboutMe__name {
-  margin: 65px 0 0;
+  margin: 66px 0 0;
   font-weight: 400;
   font-size: 50px;
   line-height: 58px;
@@ -48,6 +49,7 @@
   color: #FFFFFF;
   mix-blend-mode: normal;
   text-align: start;
+  margin: 19px 0;
 }
 
 .aboutMe__bio {
@@ -57,7 +59,7 @@
   color: #FFFFFF;
   mix-blend-mode: normal;
   text-align: start;
-  margin: 7px 0 0;
+  margin: 6px 0 0;
 }
 
 .aboutMe__link {
@@ -66,7 +68,7 @@
   line-height: 17px;
   color: #FFFFFF;
   text-decoration: none;
-  margin-top: 100px;
+  margin-top: 99px;
   align-self: flex-start;
 }
 
@@ -78,7 +80,7 @@
   border-radius: 10px;
   width: 270px;
   height: 327px;
-  margin-top: 65px;
+  margin-top: 66px;
   object-fit: cover;
 }
 
@@ -96,12 +98,13 @@
   .aboutMe__about {
     font-size: 12px;
     line-height: 18px;
+    margin: 14px 0;
   }
 
   .aboutMe__bio {
     font-size: 12px;
     line-height: 18px;
-    margin: 9px 0 0;
+    margin: 5px 0 0;
     max-width: 368px;
   }
 
@@ -139,7 +142,7 @@
 
   .aboutMe {
     margin: 0 auto;
-    padding: 68px 15px 0;
+    padding: 60px 15px 0;
   }
 
   .aboutMe__avatar {
@@ -156,6 +159,7 @@
   .aboutMe__about {
     font-size: 11px;
     line-height: 16px;
+    margin: 10px 0;
   }
 
   .aboutMe__bio {

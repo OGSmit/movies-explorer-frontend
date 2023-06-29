@@ -13,7 +13,7 @@
   color: #8B8B8B;
   mix-blend-mode: normal;
   text-align: start;
-  margin: 0 0 30px;
+  margin: 0 0 14px;
 }
 
 .portfolio__list {
@@ -36,6 +36,7 @@
   align-items: center;
   border-bottom: solid #424242;
   padding: 20px 0 17px;
+  text-align: initial;
 }
 
 .portfolio__link:hover {
@@ -79,6 +80,7 @@
     font-size: 14px;
     line-height: 20px;
     margin-bottom: 21px;
+    margin-bottom: 6px;
   }
 
   .portfolio__link {

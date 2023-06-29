@@ -47,7 +47,7 @@ function Profile({ isloggedIn }) {
           <h1 className='profile__title'>Привет, Виталий!</h1>
           <form className='profile__form'>
             <div className='profile__container-input'>
-              <label className='profile__input-label' for='profile__input_name'>Имя</label>
+              <label className='profile__input-label' htmlFor='profile__input_name'>Имя</label>
               <input name='name'
                 onChange={handleChangeName}
                 type='text'
@@ -60,7 +60,7 @@ function Profile({ isloggedIn }) {
               <span className={formErrorMessage.name === 'undefined' ? 'profile__error-invisible' : 'profile__error'}>{formErrorMessage.name || ''}</span>
             </div>
             <div className='profile__container-input'>
-              <label className='profile__input-label' for='profile__input_email'>E-mail</label>
+              <label className='profile__input-label' htmlFor='profile__input_email'>E-mail</label>
               <input name='email'
                 type='email'
                 required

@@ -133,9 +133,10 @@
 
 .header__container {
   display: flex;
-  gap: 30px;
+  gap: 26px;
   justify-content: center;
   align-items: center;
+  margin-bottom: 2px;
 }
 
 .header__button_signIn {
