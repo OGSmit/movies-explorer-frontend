@@ -1,7 +1,7 @@
 @import url(../src/vendor/normalize.css);
 @import url(../src/vendor/fonts.css);
 
-body {
+.body {
   margin: 0;
   font-family: 'Inter', Arial, Helvetica, sans-serif;
   font-style: normal;

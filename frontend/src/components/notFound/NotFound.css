@@ -9,15 +9,6 @@
   position: relative;
 }
 
-.not-found__container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 246px;
-}
-
 .not-found__title {
   font-weight: 400;
   font-size: 140px;
@@ -65,11 +56,6 @@
 }
 
 @media (max-width: 460px) {
-  .not-found__container {
-    position: absolute;
-    top: 329px;
-  }
-
   .not-found {
     height: 1024px;
   }

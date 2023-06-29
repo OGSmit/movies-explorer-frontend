@@ -16,6 +16,15 @@
   position: relative;
 }
 
+.search-form__input-container {
+  width: 100%;
+  border-bottom: solid #424242;
+  padding-bottom: 9px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .search-form__input {
   background-color: #202020;
   border: 0;
@@ -24,8 +33,6 @@
   line-height: 34px;
   color: #8B8B8B;
   width: 100%;
-  border-bottom: solid #424242;
-  padding-bottom: 9px;
 }
 
 .search-form__input:focus {
@@ -44,9 +51,6 @@
   width: 58.6px;
   height: 34px;
   border: 0;
-  position: absolute;
-  top: 2px;
-  right: 0;
 }
 
 .search-form__button:hover {
