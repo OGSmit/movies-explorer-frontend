@@ -52,6 +52,8 @@
   flex-direction: row;
   gap: 10px;
   justify-content: center;
+  list-style-type: none;
+  padding: 0;
 }
 
 .techs__item {

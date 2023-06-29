@@ -3,6 +3,8 @@
   background-color: #272727;
   box-sizing: border-box;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .navTab__list {
@@ -10,7 +12,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   gap: 40px;
+  list-style-type: none;
+  padding: 0;
 }
 
 .navTab__item {

@@ -39,9 +39,11 @@ function Header({ isloggedIn }) {
 
         <header className='header'>
           <Link to='/' className='header__logo-link' > <img alt='логотип проекта' src={logo} className='header__logo' /></Link>
-          <nav className='header__movie-nav'>
-            <NavLink to='/movies' className={location.pathname === '/movies' ? 'header__link-movie-active' : 'header__link-movie'}>Фильмы</NavLink>
-            <NavLink to='/saved-movies' className={location.pathname === '/saved-movies' ? 'header__link-movie-active' : 'header__link-movie'}>Сохранённые фильмы</NavLink>
+          <nav>
+            <ul className='header__movie-nav'>
+              <li><NavLink to='/movies' className={location.pathname === '/movies' ? 'header__link-active' : 'header__link'}>Фильмы</NavLink></li>
+              <li><NavLink to='/saved-movies' className={location.pathname === '/saved-movies' ? 'header__link-active' : 'header__link'}>Сохранённые фильмы</NavLink></li>
+            </ul>
           </nav>
           <button onClick={handleBurgerOpening} className='header__burger' type='button'></button>
           <Link to='/profile' className=' header__account-info'>

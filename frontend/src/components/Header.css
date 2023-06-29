@@ -16,9 +16,10 @@
   flex-direction: row;
   gap: 17px;
   margin-left: 50px;
+  list-style-type: none;
 }
 
-.header__link-movie {
+.header__link {
   font-weight: 400;
   font-size: 13px;
   line-height: 18px;
@@ -27,12 +28,12 @@
   text-decoration: none;
 }
 
-.header__link-movie:hover {
+.header__link:hover {
   cursor: pointer;
   opacity: .7;
 }
 
-.header__link-movie-active {
+.header__link-active {
   font-weight: 500;
   line-height: 18px;
   font-size: 14px;
@@ -102,7 +103,7 @@
     display: none;
   }
 
-  .header__link-movie-active {
+  .header__link-active {
     padding-bottom: 8px;
     border-bottom: solid #000;
   }

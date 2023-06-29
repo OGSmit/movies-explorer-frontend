@@ -34,10 +34,12 @@
   color: #FFFFFF;
 }
 
-.footer__nav {
+.footer__nav-list {
   display: flex;
   flex-direction: row;
   gap: 20px;
+  list-style-type: none;
+  padding: 0;
 }
 
 .footer__link {

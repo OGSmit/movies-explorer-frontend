@@ -8,6 +8,12 @@
   padding: 48px 70px;
 }
 
+.movieCardList__list {
+  list-style-type: none;
+  padding: 0;
+  
+}
+
 .movieCardList__more {
   background-color: #202020;
   display: flex;
