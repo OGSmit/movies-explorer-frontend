@@ -59,7 +59,7 @@ function Registration({ onRegistration }) {
   }
 
   return (
-    <section className='registration'>
+    <main className='registration'>
       <div className='registration__container-top'>
         <Link to='/' className='registration__logo-link'><img className='registration__logo' alt='логотип' src={logo}></img></Link>
         <h2 className='registration__title'>Добро пожаловать!</h2>
@@ -101,7 +101,7 @@ function Registration({ onRegistration }) {
           <Link to='/sign-in' className='registration__link-login'>Войти</Link>
         </div>
       </div>
-    </section>
+    </main>
   )
 }
 

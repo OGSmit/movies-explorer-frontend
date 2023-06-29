@@ -44,7 +44,7 @@ function Login({ onLogin }) {
   }
 
   return (
-    <section className='login'>
+    <main className='login'>
       <div className='login__container-top'>
         <Link to='/' className='login__logo-link'><img className='login__logo' alt='логотип' src={logo}></img></Link>
         <h2 className='login__title'>Рады видеть!</h2>
@@ -76,7 +76,7 @@ function Login({ onLogin }) {
           <Link to='/sign-up' className='login__link-login'>Регистрация</Link>
         </div>
       </div>
-    </section >
+    </main >
   )
 }
 

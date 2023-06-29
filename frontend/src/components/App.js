@@ -62,9 +62,9 @@ function App() {
 
         <Route path='/' element={<Main isloggedIn={isloggedIn} />} />
 
-        <Route path='/sign-up' element={<Registration onRegistration={handleRegistration} />} />
+        <Route path='/signup' element={<Registration onRegistration={handleRegistration} />} />
 
-        <Route path='/sign-in' element={<Login onLogin={handleLogin} />} />
+        <Route path='/signin' element={<Login onLogin={handleLogin} />} />
 
         <Route path='/saved-movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={SavedMovies} isloggedIn={isloggedIn} />} />
 

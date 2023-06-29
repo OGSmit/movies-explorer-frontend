@@ -44,8 +44,8 @@ function Header({ isloggedIn }) {
         <header className='header header_unlogged'>
           <Link to='/' className='header__logo-link'><img alt='логотип' src={logo} /></Link>
           <div className='header__container'>
-            <Link to='/sign-up' className='header__button header__button_signIn'>Регистрация</Link>
-            <Link to='/sign-in' className='header__button header__button_enter'>Войти</Link>
+            <Link to='/signup' className='header__button header__button_signIn'>Регистрация</Link>
+            <Link to='/signin' className='header__button header__button_enter'>Войти</Link>
           </div>
         </header>}
       <BurgerMenu isOpened={isBurgerOpened} onClose={handleBurgerOpening} />

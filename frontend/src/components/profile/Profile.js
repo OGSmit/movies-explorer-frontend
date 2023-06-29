@@ -33,7 +33,7 @@ function Profile({ isloggedIn }) {
   }
 
   return (
-    <section className='profile'>
+    <main className='profile'>
       <Header isloggedIn={isloggedIn} />
       <div className='profile__container'>
         <h2 className='profile__title'>Привет, Виталий!</h2>
@@ -66,7 +66,7 @@ function Profile({ isloggedIn }) {
         </form>
         <button type='button' className='profile__button-exit'>Выйти из аккаунта</button>
       </div>
-    </section>
+    </main>
   )
 }
 
