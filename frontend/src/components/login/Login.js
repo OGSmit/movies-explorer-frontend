@@ -69,7 +69,7 @@ function Login({ onLogin }) {
             type="password"
             onChange={handleChangePassword}></input>
           <span className={formErrorMessage.password === 'undefined' ? 'login__error-invisible' : 'login__error'}>{formErrorMessage.password || ''}</span>
-          <button disabled={!isFormFieldsValid} className='login__button-submit'>Войти</button>
+          <button type='button' disabled={!isFormFieldsValid} className='login__button-submit'>Войти</button>
         </form>
         <div className='login__container-bottom'>
           <p className='login__link-description'>Ещё не зарегистрированы?</p>
