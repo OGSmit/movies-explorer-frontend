@@ -103,6 +103,11 @@
   height: 12px;
 }
 
+.profile__input:focus {
+  outline: none;
+  transform: scale(1.1);
+}
+
 .profile__error-invisible {
   display: none;
 }

@@ -60,6 +60,7 @@
 
 .registration__input:focus {
   outline: none;
+  transform: scale(1.1);
 }
 
 .registration__button-submit {

@@ -12,11 +12,6 @@ body {
   background-color: #202020;
 }
 
-input:focus {
-  outline: none;
-  transform: scale(1.1);
-}
-
 .no-scroll {
   overflow: hidden;
 }
