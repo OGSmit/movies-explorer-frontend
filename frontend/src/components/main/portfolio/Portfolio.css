@@ -19,16 +19,8 @@
 .portfolio__list {
   display: flex;
   flex-direction: column;
-
-}
-
-.portfolio__link-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: solid #424242;
-  padding: 20px 0 17px;
+  list-style-type: none;
+  padding: 0;
 }
 
 .portfolio__link {
@@ -38,6 +30,12 @@
   letter-spacing: -0.04em;
   color: #FFFFFF;
   text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid #424242;
+  padding: 20px 0 17px;
 }
 
 .portfolio__link:hover {
