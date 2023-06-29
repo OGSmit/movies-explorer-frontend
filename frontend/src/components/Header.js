@@ -1,11 +1,12 @@
 import './Header.css'
 import logo from '../images/header__logo.svg';
 import { useState, useEffect } from 'react';
-import { NavLink, Link, useLocation } from 'react-router-dom';
+import { NavLink, Link, useLocation, useNavigate } from 'react-router-dom';
 import BurgerMenu from './burgerMenu/BurgerMenu';
 
 function Header({ isloggedIn }) {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const [isBurgerOpened, setIsBurgerOpened] = useState(false)
 
@@ -23,6 +24,14 @@ function Header({ isloggedIn }) {
   function handleBurgerOpening() {
     setIsBurgerOpened(!isBurgerOpened);
   }
+
+  const goSignUp = () => {
+    navigate('/signup');
+  };
+
+  const goSignIn = () => {
+    navigate('/signin');
+  };
 
   return (
     <>
@@ -44,8 +53,8 @@ function Header({ isloggedIn }) {
         <header className='header header_unlogged'>
           <Link to='/' className='header__logo-link'><img alt='логотип' src={logo} /></Link>
           <div className='header__container'>
-            <Link to='/signup' className='header__button header__button_signIn'>Регистрация</Link>
-            <Link to='/signin' className='header__button header__button_enter'>Войти</Link>
+            <button onClick={goSignUp} type='button' className='header__button header__button_signIn'>Регистрация</button>
+            <button onClick={goSignIn} type='button' className='header__button header__button_enter'>Войти</button>
           </div>
         </header>}
       <BurgerMenu isOpened={isBurgerOpened} onClose={handleBurgerOpening} />

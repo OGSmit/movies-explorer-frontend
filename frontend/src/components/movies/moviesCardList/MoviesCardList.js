@@ -4,7 +4,7 @@ import MoviesCard from '../moviesCard/MoviesCard';
 function MoviesCardList({isNeedMoreButton}) {
 
   return (
-    <div className='movieCardList'>
+    <section className='movieCardList'>
       <MoviesCard name={'33 слова о дизайне'} />
       <MoviesCard name={'Киноальманах «100 лет дизайна»'}/>
       <MoviesCard name={'В погоне за Бенкси'}/>
@@ -13,7 +13,7 @@ function MoviesCardList({isNeedMoreButton}) {
       {isNeedMoreButton? <div className='movieCardList__more'>
         <button type='button' className='movieCardList__button-more'>Еще</button>
       </div> : ''}
-    </div>
+    </section>
   )
 }
 

@@ -146,6 +146,8 @@
   align-items: center;
   text-align: right;
   color: #FFFFFF;
+  border: 0;
+  background-color: #073042;
 }
 
 .header__button_signIn:hover {
@@ -166,6 +168,7 @@
   font-size: 12px;
   line-height: 16px;
   color: #000000;
+  border: 0;
 }
 
 .header__button_enter:hover {
