@@ -27,6 +27,11 @@
   text-decoration: none;
 }
 
+.header__link-movie:hover {
+  cursor: pointer;
+  opacity: .7;
+}
+
 .header__link-movie-active {
   font-weight: 500;
   line-height: 18px;
@@ -42,6 +47,11 @@
   align-items: center;
   gap: 10px;
   text-decoration: none;
+}
+
+.header__account-info:hover {
+  opacity: .7;
+  cursor: pointer;
 }
 
 .header__account-name {
@@ -60,6 +70,11 @@
   background-image: url(../image/header__account-logo.svg);
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.header__logo-link:hover {
+  cursor: pointer;
+  opacity: .8;
 }
 
 .header__burger {
@@ -133,6 +148,11 @@
   color: #FFFFFF;
 }
 
+.header__button_signIn:hover {
+  cursor: pointer;
+  opacity: .8;
+}
+
 .header__button_enter {
   background: #3DDC84;
   border-radius: 3px;
@@ -146,6 +166,11 @@
   font-size: 12px;
   line-height: 16px;
   color: #000000;
+}
+
+.header__button_enter:hover {
+  cursor: pointer;
+  opacity: .8;
 }
 
 @media (max-width: 768px) {

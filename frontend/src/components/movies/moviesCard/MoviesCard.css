@@ -46,6 +46,10 @@
   margin-top: 21px;
 }
 
+.moviesCard__like:hover {
+  opacity: .8;
+  cursor: pointer;
+}
 
 .moviesCard__poster {
   width: 220px;

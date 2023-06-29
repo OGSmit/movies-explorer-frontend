@@ -40,6 +40,11 @@
   text-decoration: none;
 }
 
+.portfolio__link:hover {
+  cursor: pointer;
+  opacity: .7;
+}
+
 .portfolio__link-container:last-of-type {
   border: 0;
 }
