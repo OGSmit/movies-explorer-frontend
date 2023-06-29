@@ -47,7 +47,7 @@ function Login({ onLogin }) {
     <main className='login'>
       <div className='login__container-top'>
         <Link to='/' className='login__logo-link'><img className='login__logo' alt='логотип' src={logo}></img></Link>
-        <h2 className='login__title'>Рады видеть!</h2>
+        <h1 className='login__title'>Рады видеть!</h1>
       </div>
       <div className='login__container-main'>
         <form className='login__form' onSubmit={handleSubmit}>

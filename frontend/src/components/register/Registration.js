@@ -62,7 +62,7 @@ function Registration({ onRegistration }) {
     <main className='registration'>
       <div className='registration__container-top'>
         <Link to='/' className='registration__logo-link'><img className='registration__logo' alt='логотип' src={logo}></img></Link>
-        <h2 className='registration__title'>Добро пожаловать!</h2>
+        <h1 className='registration__title'>Добро пожаловать!</h1>
       </div>
       <div className='registration__container-main'>
         <form className='registration__form' onSubmit={handleSubmit}>

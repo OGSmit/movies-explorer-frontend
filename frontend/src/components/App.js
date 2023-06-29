@@ -16,22 +16,22 @@ function App() {
 
   const [isloggedIn, setIsloggedIn] = useState(false);
 
-  // useEffect(() => {
-  //   function handleTokenCheck() {
-  //     const jwt = localStorage.getItem('jwt');
-  //     if (jwt) {
-  //       return tokencheck(jwt).then((res) => {
-  //         setIsloggedIn(true)
-  //       })
-  //         .then(() => {
-  //           navigate("/", { replace: true })
-  //         })
-  //         .catch(err => console.log(err))
-  //     }
-  //   }
-  //   handleTokenCheck()
-  //   return () => { }
-  // }, [])
+  useEffect(() => {
+    function handleTokenCheck() {
+      const jwt = localStorage.getItem('jwt');
+      if (jwt) {
+        return tokencheck(jwt).then((res) => {
+          setIsloggedIn(true)
+        })
+          .then(() => {
+            navigate("/", { replace: true })
+          })
+          .catch(err => console.log(err))
+      }
+    }
+    handleTokenCheck()
+    return () => { }
+  }, [])
 
   async function handleRegistration(name, email, password, e) {
     return register(name, email, password)
