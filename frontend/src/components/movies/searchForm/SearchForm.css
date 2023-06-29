@@ -79,12 +79,12 @@
   top: 0;
   width: 36px;
   height: 20px;
-  background-image: url("../../../image/checkbox_inactive.png");
+  background-image: url("../../../images/checkbox_inactive.png");
   background-size: cover;
 }
 
 .search-form__checkbox:checked+label:before {
-  background-image: url("../../../image/checkbox_active.png");
+  background-image: url("../../../images/checkbox_active.png");
 }
 
 .search-form__checkbox-description {

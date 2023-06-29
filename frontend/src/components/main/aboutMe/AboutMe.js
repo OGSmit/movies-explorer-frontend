@@ -1,5 +1,5 @@
 import "./AboutMe.css"
-import avatar from '../../../image/bio__avatar.png'
+import avatar from '../../../images/bio__avatar.png'
 import { Element} from 'react-scroll';
 
 function AboutMe() {

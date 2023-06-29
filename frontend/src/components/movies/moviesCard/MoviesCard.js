@@ -1,5 +1,5 @@
 import './MoviesCard.css'
-import defaultImage from '../../../image/movieCard__poster.png'
+import defaultImage from '../../../images/movieCard__poster.png'
 
 function MoviesCard({ name, poster }) {
 

@@ -1,5 +1,5 @@
 import './Portfolio.css'
-import linkLogo from '../../../image/portfolio__link-icon.svg'
+import linkLogo from '../../../images/portfolio__link-icon.svg'
 import { Link } from 'react-router-dom';
 
 function Portfolio() {

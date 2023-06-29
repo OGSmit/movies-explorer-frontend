@@ -1,6 +1,6 @@
 import './Login.css'
 import { Link } from 'react-router-dom';
-import logo from '../../image/header__logo.svg';
+import logo from '../../images/header__logo.svg';
 import { useState } from 'react';
 
 function Login({ onLogin }) {

@@ -67,7 +67,7 @@
   height: 26px;
   background-color: #313131;
   border-radius: 50px;
-  background-image: url(../image/header__account-logo.svg);
+  background-image: url(../images/header__account-logo.svg);
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -80,7 +80,7 @@
 .header__burger {
   width: 44px;
   height: 44px;
-  background-image: url(../image/header__burger.png);
+  background-image: url(../images/header__burger.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

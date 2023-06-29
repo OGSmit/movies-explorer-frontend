@@ -1,5 +1,5 @@
 import './Header.css'
-import logo from '../image/header__logo.svg';
+import logo from '../images/header__logo.svg';
 import { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import BurgerMenu from './burgerMenu/BurgerMenu';

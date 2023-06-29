@@ -1,5 +1,5 @@
 import './Registration.css'
-import logo from '../../image/header__logo.svg';
+import logo from '../../images/header__logo.svg';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
