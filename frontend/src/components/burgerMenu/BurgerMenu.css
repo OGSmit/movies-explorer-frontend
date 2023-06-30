@@ -14,7 +14,7 @@
   box-sizing: border-box;
 }
 
-.burger-menu_close {
+.burger-menu_none {
   display: none;
 }
 
@@ -38,7 +38,7 @@
 }
 
 
-.burger-menu_link {
+.burger-menu__link {
   color: #FFF;
   text-align: center;
   font-size: 18px;
@@ -46,7 +46,7 @@
   text-decoration: none;
 }
 
-.burger-menu_link-active {
+.burger-menu__link-active {
   color: #FFF;
   text-align: center;
   font-size: 18px;
@@ -81,6 +81,7 @@
   background-image: url(../../images/header__account-logo.svg);
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center -2px;
 }
 
 @media (max-width: 460px) {

@@ -74,7 +74,7 @@
   align-items: center;
   text-align: center;
   color: #FFFFFF;
-  margin-top: 217px;
+  margin-top: 204px;
 }
 
 .profile__button-exit {
@@ -114,15 +114,15 @@
 
 @media (max-width: 768px) {
   .profile__container {
-    padding: 234px 10px;
+    padding: 232px 10px;
   }
 
   .profile__title {
     margin-bottom: 96px;
   }
 
-  .profile__button_submit {
-    margin-top: 208px;
+  .profile__button-submit {
+    margin-top: 196px;
   }
 }
 
@@ -135,13 +135,18 @@
     margin-bottom: 81px;
   }
 
-  .profile__button_submit {
+  .profile__input { 
+    width: 78%;
+  }
+
+  .profile__button-submit {
     margin-top: 376px;
     font-size: 12px;
     line-height: 15px;
+    margin-top: 362px;
   }
 
-  .profile__button_exit {
+  .profile__button-exit {
     font-size: 12px;
     line-height: 15px;
   }
