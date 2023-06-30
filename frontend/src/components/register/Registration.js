@@ -74,6 +74,7 @@ function Registration({ onRegistration }) {
             minLength={2}
             maxLength={18}
             type="text"
+            placeholder='Виталий' //placeholder для макета, потом уберу
             onChange={handleChangeName}></input>
           <span className={formErrorMessage.name === 'undefined' ? 'registration__error-invisible' : 'registration__error'}>{formErrorMessage.name || ''}</span>
           <label className='registration__label' htmlFor='registration__input_email'>E-mail</label>
@@ -82,6 +83,7 @@ function Registration({ onRegistration }) {
             name='email'
             required
             type="email"
+            placeholder='pochta@yandex.ru' //placeholder для макета, потом уберу
             onChange={handleChangeEmail}></input>
           <span className={formErrorMessage.email === 'undefined' ? 'registration__error-invisible' : 'registration__error'}>{formErrorMessage.email || ''}</span>
           <label className='registration__label' htmlFor='registration__input_password'>Пароль</label>
@@ -92,8 +94,9 @@ function Registration({ onRegistration }) {
             minLength={8}
             maxLength={24}
             type="password"
+            placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;' //placeholder для макета, потом уберу
             onChange={handleChangePassword}></input>
-          <span className={formErrorMessage.password === 'undefined' ? 'registration__error-invisible' : 'registration__error'}>{formErrorMessage.password || ''}</span>
+          <span className={formErrorMessage.password === 'undefined' ? 'registration__error-invisible' : 'registration__error'}>{formErrorMessage.password || 'что-то пошло не так...'}</span>
           <button disabled={!isFormFieldsValid} className='registration__button-submit' >Зарегистрироваться</button>
         </form>
         <div className='registration__container-bottom'>

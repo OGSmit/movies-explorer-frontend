@@ -24,7 +24,7 @@
   font-size: 24px;
   line-height: 29px;
   color: #FFFFFF;
-  margin-top: 40px;
+  margin-top: 37px;
 }
 
 .registration__container-main {
@@ -32,7 +32,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 16px 30px;
+  padding: 18px 30px;
 }
 
 .registration__label {
@@ -54,6 +54,7 @@
   border: 0;
   background-color: #202020;
   width: 100%;
+  padding: 0;
   padding-bottom: 7px;
   border-bottom: solid #424242;
 }
@@ -74,7 +75,7 @@
   border: 0;
   width: 100%;
   height: 45px;
-  margin-top: 129px;
+  margin-top: 132px;
 }
 
 .registration__button-submit[disabled] {
@@ -97,7 +98,7 @@
   flex-direction: row;
   align-items: center;
   gap: 6px;
-  padding: 2px 30px;
+  padding: 0px 30px;
 }
 
 .registration__link-description {
@@ -126,7 +127,7 @@
   font-size: 10px;
   text-align: start;
   min-width: 100%;
-  height: 20px;
+  min-height: 16px;
 }
 
 .registration__error-invisible {
@@ -141,7 +142,7 @@
 
 @media (max-width: 460px) {
   .registration {
-    padding: 66px 30px;
+    padding: 55px 30px;
   }
 
   .registration__container-top {
@@ -152,12 +153,12 @@
   .registration__title {
     font-size: 24px;
     width: 260px;
-    margin-top: 50px;
+    margin-top: 49px;
   }
 
   .registration__container-main {
     width: 260px;
-    padding: 54px 0;
+    padding: 57px 0;
     box-sizing: border-box;
   }
 
