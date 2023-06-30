@@ -57,6 +57,7 @@ function Login({ onLogin }) {
             name='email'
             required
             type="email"
+            placeholder='pochta@yandex.ru' // placeholder для макета уберу
             onChange={handleChangeEmail}></input>
           <span className={formErrorMessage.email === 'undefined' ? 'login__error-invisible' : 'login__error'}>{formErrorMessage.email || ''}</span>
           <label className='login__label' htmlFor='login__input_password'>Пароль</label>
