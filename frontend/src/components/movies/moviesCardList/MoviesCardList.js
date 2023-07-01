@@ -1,18 +1,18 @@
 import './MoviesCardList.css'
 import MoviesCard from '../moviesCard/MoviesCard';
 
-function MoviesCardList({isNeedMoreButton}) {
+function MoviesCardList({ inSaveMovies, isNeedMoreButton }) {
 
   return (
     <section className='movieCardList'>
       <ul className='movieCardList__list'>
-        <li><MoviesCard name={'33 слова о дизайне'} /></li>
-        <li><MoviesCard name={'Киноальманах «100 лет дизайна»'}/></li>
-        <li><MoviesCard name={'В погоне за Бенкси'}/></li>
-        <li><MoviesCard name={'Баския: Взрыв реальности'}/></li>
-        <li><MoviesCard name={'long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-name'}/></li>
+        <li className='movieCardList__item'><MoviesCard inSaveMovies={inSaveMovies} name={'В погоне за Бенкси'} /></li>
+        <li className='movieCardList__item'><MoviesCard inSaveMovies={inSaveMovies} name={'Баския: Взрыв реальности'} /></li>
+        <li className='movieCardList__item'><MoviesCard inSaveMovies={inSaveMovies} name={'В погоне за Бенкси'} /></li>
+        <li className='movieCardList__item'><MoviesCard inSaveMovies={inSaveMovies} name={'Баския: Взрыв реальности'} /></li>
+        <li className='movieCardList__item'><MoviesCard inSaveMovies={inSaveMovies} name={'long-long-long-long-long-long-long-long-long- long-long-long-long-long-long-long-long- long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-name'} /></li>
       </ul>
-      {isNeedMoreButton? <div className='movieCardList__more'>
+      {isNeedMoreButton ? <div className='movieCardList__more'>
         <button type='button' className='movieCardList__button-more'>Еще</button>
       </div> : ''}
     </section>

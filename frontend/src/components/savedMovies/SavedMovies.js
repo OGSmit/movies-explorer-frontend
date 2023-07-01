@@ -11,7 +11,7 @@ function SavedMovies({ isloggedIn }) {
       <Header isloggedIn={isloggedIn} />
       <main className='savedMovies'>
         <SearchForm />
-        <MoviesCardList isNeedMoreButton={false} />
+        <MoviesCardList inSaveMovies={true} isNeedMoreButton={false} />
       </main>
       <Footer />
     </>

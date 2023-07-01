@@ -20,7 +20,7 @@
 
 .burger-menu__button-close {
   background-color: #202020;
-  background-image: url(../../images/button__close.png);
+  background-image: url(../../images/button__close.svg);
   width: 22px;
   height: 22px;
   background-position: center;
