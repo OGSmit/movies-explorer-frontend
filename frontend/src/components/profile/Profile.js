@@ -8,6 +8,7 @@ function Profile({ isloggedIn }) {
 
   const [formValue, setFormValue] = useState({});
   const [formErrorMessage, setFormErrorMessage] = useState({});
+  const [gonnaEdit, setGonnaEdit] = useState(false)
 
   function handleChangeName(e) {
     const { name, value } = e.target;
@@ -39,6 +40,14 @@ function Profile({ isloggedIn }) {
     navigate('/')
   }
 
+  const handelEdit = () => {
+    const inputs = document.querySelectorAll('.profile__input');
+    inputs.forEach(input => {
+      input.disabled = false;
+    });
+    setGonnaEdit(true);
+  }
+
   return (
     <>
       <Header isloggedIn={isloggedIn} />
@@ -49,6 +58,7 @@ function Profile({ isloggedIn }) {
             <div className='profile__container-input'>
               <label className='profile__input-label' htmlFor='profile__input_name'>Имя</label>
               <input name='name'
+                disabled='true'
                 onChange={handleChangeName}
                 type='text'
                 required
@@ -62,6 +72,7 @@ function Profile({ isloggedIn }) {
             <div className='profile__container-input'>
               <label className='profile__input-label' htmlFor='profile__input_email'>E-mail</label>
               <input name='email'
+                disabled='true'
                 type='email'
                 required
                 onChange={handleChangeEmail}
@@ -70,9 +81,15 @@ function Profile({ isloggedIn }) {
                 id='profile__input_email'></input>
               <span className={formErrorMessage.email === 'undefined' ? 'profile__error-invisible' : 'profile__error'}>{formErrorMessage.email || ''}</span>
             </div>
-            <button type='submit' className='profile__button-submit'>Редактировать</button>
+            {gonnaEdit ?
+              <>
+                <span className='profile__submit-error profile__submit-error_invisible'>При обновлении профиля произошла ошибка.</span>
+                <button type='submit' className='profile__button-save'>Сохранить</button>
+              </> :
+              <button onClick={handelEdit} type='button' className='profile__button-edit'>Редактировать</button>
+            }
           </form>
-          <button onClick={goExit} type='button' className='profile__button-exit'>Выйти из аккаунта</button>
+          <button onClick={goExit} type='button' className={gonnaEdit ? 'profile__button-exit profile__button-exit_invisible' : 'profile__button-exit'}>Выйти из аккаунта</button>
         </section>
       </main>
     </>
