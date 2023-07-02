@@ -71,9 +71,9 @@
   background-color: #313131;
   border-radius: 50px;
   background-image: url(../images/header__account-logo.svg);
-  background-size: cover;
   background-repeat: no-repeat;
-  background-position: center 2px;
+  background-size: 10px 10px;
+  background-position: center;
 }
 
 .header__logo-link:hover {
