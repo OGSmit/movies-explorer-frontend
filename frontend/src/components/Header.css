@@ -7,6 +7,10 @@
   padding: 12px 70px;
 }
 
+.header_mainColor {
+  background-color: #073042;
+}
+
 .header_unlogged {
   background-color: #073042;
   padding: 17px 70px;

@@ -10,6 +10,8 @@ function Header({ isloggedIn }) {
 
   const [isBurgerOpened, setIsBurgerOpened] = useState(false)
 
+  const isMainPage = location.pathname === '/';
+
   // заблочил скролл при открытом бургере 
   useEffect(() => {
     const body = document.querySelector('body');
@@ -37,7 +39,7 @@ function Header({ isloggedIn }) {
     <>
       {isloggedIn ?
 
-        <header className='header'>
+        <header className={isMainPage?'header header_mainColor':'header' }>
           <Link to='/' className='header__logo-link' > <img alt='логотип проекта' src={logo} className='header__logo' /></Link>
           <nav>
             <ul className='header__list'>
