@@ -47,7 +47,7 @@ function Header({ isloggedIn }) {
               <li><NavLink to='/saved-movies' className={location.pathname === '/saved-movies' ? 'header__link-active' : 'header__link'}>Сохранённые фильмы</NavLink></li>
             </ul>
           </nav>
-          <button onClick={handleBurgerOpening} className='header__burger' type='button'></button>
+          <button onClick={handleBurgerOpening} className={isMainPage?'header__burger header__burger_mainColor' : 'header__burger' } type='button'></button>
           <Link to='/profile' className=' header__account-info'>
             <span className='header__account-name'>Аккаунт</span>
             <div className='header__account-logo'></div>

@@ -4,8 +4,8 @@ import { Element } from 'react-scroll';
 function AboutProject() {
 
   return (
-    <Element name="aboutProject" className="section-wrapper">
-      <section className='aboutProject' id='aboutProject'>
+    <section className='aboutProject' id='aboutProject'>
+      <Element name="aboutProject">
         <h2 className='aboutProject__description'>О проекте</h2>
         <div className='aboutProject__container'>
           <div className='aboutProject__topic-stage'>
@@ -27,8 +27,8 @@ function AboutProject() {
             <p className='aboutProject__line-name'>Front-end</p>
           </div>
         </div>
-      </section>
-    </Element>
+      </Element>
+    </section>
   )
 }
 

@@ -59,8 +59,8 @@ function Registration({ onRegistration }) {
   }
 
   return (
-    <main className='registration'>
-      <section>
+    <main>
+      <section className='registration'>
         <div className='registration__container-top'>
           <Link to='/' className='registration__logo-link'><img className='registration__logo' alt='логотип' src={logo}></img></Link>
           <h1 className='registration__title'>Добро пожаловать!</h1>
@@ -98,7 +98,7 @@ function Registration({ onRegistration }) {
               placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;' //placeholder для макета, потом уберу
               onChange={handleChangePassword}></input>
             <span className={formErrorMessage.password === 'undefined' ? 'registration__error-invisible' : 'registration__error'}>{formErrorMessage.password || 'что-то пошло не так...'}</span>
-            <button type='button' disabled={!isFormFieldsValid} className='registration__button-submit' >Зарегистрироваться</button>
+            <button type='submit' disabled={!isFormFieldsValid} className='registration__button-submit' >Зарегистрироваться</button>
           </form>
           <div className='registration__container-bottom'>
             <p className='registration__link-description'>Уже зарегистрированы?</p>

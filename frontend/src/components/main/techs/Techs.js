@@ -4,8 +4,8 @@ import { Element } from 'react-scroll';
 function Techs() {
 
   return (
-    <Element name="techs" className="section-wapper">
-      <section className="techs" id='techs'>
+    <section className="techs" id='techs'>
+      <Element name="techs">
         <h2 className='techs__description'>Технологии</h2>
         <div className='techs__container'>
           <h3 className='techs__title'>7 технологий</h3>
@@ -20,8 +20,8 @@ function Techs() {
             <li><span className='techs__item'>mongoDB</span></li>
           </ul>
         </div>
-      </section>
-    </Element>
+      </Element>
+    </section>
   )
 }
 

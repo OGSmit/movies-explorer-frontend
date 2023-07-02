@@ -97,6 +97,10 @@
   display: none;
 }
 
+.header__burger_mainColor {
+  background-color: #073042;
+}
+
 .header__burger:hover {
   opacity: .8;
   cursor: pointer;

@@ -44,8 +44,8 @@ function Login({ onLogin }) {
   }
 
   return (
-    <main className='login'>
-      <section>
+    <main>
+      <section className='login'>
         <div className='login__container-top'>
           <Link to='/' className='login__logo-link'><img className='login__logo' alt='логотип' src={logo}></img></Link>
           <h1 className='login__title'>Рады видеть!</h1>
@@ -71,7 +71,7 @@ function Login({ onLogin }) {
               type="password"
               onChange={handleChangePassword}></input>
             <span className={formErrorMessage.password === 'undefined' ? 'login__error-invisible' : 'login__error'}>{formErrorMessage.password || ''}</span>
-            <button type='button' disabled={!isFormFieldsValid} className='login__button-submit'>Войти</button>
+            <button type='submit' disabled={!isFormFieldsValid} className='login__button-submit'>Войти</button>
           </form>
           <div className='login__container-bottom'>
             <p className='login__link-description'>Ещё не зарегистрированы?</p>
