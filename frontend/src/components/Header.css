@@ -93,6 +93,11 @@
   display: none;
 }
 
+.header__burger:hover {
+  opacity: .8;
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   .header {
     padding: 17px 30px;
