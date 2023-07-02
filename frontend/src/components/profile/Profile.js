@@ -48,6 +48,12 @@ function Profile({ isloggedIn }) {
     setGonnaEdit(true);
   }
 
+  // это только для проверки верстки , далее удаляю
+  const doErrorForReviewOnly = () => {
+    const span = document.querySelector('.profile__submit-error');
+    span.classList.toggle('profile__submit-error_invisible');
+  }
+
   return (
     <>
       <Header isloggedIn={isloggedIn} />
@@ -83,8 +89,8 @@ function Profile({ isloggedIn }) {
             </div>
             {gonnaEdit ?
               <>
-                <span className='profile__submit-error profile__submit-error_invisible'>При обновлении профиля произошла ошибка.</span>
-                <button type='submit' className='profile__button-save'>Сохранить</button>
+                <span className='profile__submit-error'>При обновлении профиля произошла ошибка.</span>
+                <button onClick={doErrorForReviewOnly} type='submit' className='profile__button-save'>Сохранить</button>
               </> :
               <button onClick={handelEdit} type='button' className='profile__button-edit'>Редактировать</button>
             }
