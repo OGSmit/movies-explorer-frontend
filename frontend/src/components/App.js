@@ -14,7 +14,7 @@ import ProtectedRouteElement from './ProtectedRoute';
 function App() {
   const navigate = useNavigate();
 
-  const [isloggedIn, setIsloggedIn] = useState(true);
+  const [isloggedIn, setIsloggedIn] = useState(false);
 
   // useEffect(() => {
   //   function handleTokenCheck() {

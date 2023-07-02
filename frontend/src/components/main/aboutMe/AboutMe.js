@@ -10,7 +10,7 @@ function AboutMe() {
         <h2 className="aboutMe__description">Студент</h2>
         <div className="aboutMe__container">
           <div className="aboutMe__container-bio">
-            <h2 className="aboutMe__name">Виталий</h2>
+            <h3 className="aboutMe__name">Виталий</h3>
             <p className="aboutMe__about">Фронтенд-разработчик, 35 лет</p>
             <p className="aboutMe__bio">Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена
               и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ Контур».

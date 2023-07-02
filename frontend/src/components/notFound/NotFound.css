@@ -45,11 +45,6 @@
 }
 
 @media (max-width: 768px) {
-  .not-found__container {
-    position: absolute;
-    top: 408px;
-  }
-
   .not-found {
     height: 1024px;
   }

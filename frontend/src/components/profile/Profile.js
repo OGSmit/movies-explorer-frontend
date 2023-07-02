@@ -43,7 +43,7 @@ function Profile({ isloggedIn }) {
     <>
       <Header isloggedIn={isloggedIn} />
       <main className='profile'>
-        <div className='profile__container'>
+        <section className='profile__container'>
           <h1 className='profile__title'>Привет, Виталий!</h1>
           <form className='profile__form'>
             <div className='profile__container-input'>
@@ -73,7 +73,7 @@ function Profile({ isloggedIn }) {
             <button type='submit' className='profile__button-submit'>Редактировать</button>
           </form>
           <button onClick={goExit} type='button' className='profile__button-exit'>Выйти из аккаунта</button>
-        </div>
+        </section>
       </main>
     </>
   )
