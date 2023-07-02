@@ -12,7 +12,7 @@
   padding: 17px 70px;
 }
 
-.header__movie-nav {
+.header__list {
   display: flex;
   flex-direction: row;
   gap: 17px;
@@ -107,7 +107,7 @@
     display: block;
   }
 
-  .header__movie-nav {
+  .header__list {
     display: none;
   }
 

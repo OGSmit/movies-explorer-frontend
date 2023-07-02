@@ -40,7 +40,7 @@ function Header({ isloggedIn }) {
         <header className='header'>
           <Link to='/' className='header__logo-link' > <img alt='логотип проекта' src={logo} className='header__logo' /></Link>
           <nav>
-            <ul className='header__movie-nav'>
+            <ul className='header__list'>
               <li><NavLink to='/movies' className={location.pathname === '/movies' ? 'header__link-active' : 'header__link'}>Фильмы</NavLink></li>
               <li><NavLink to='/saved-movies' className={location.pathname === '/saved-movies' ? 'header__link-active' : 'header__link'}>Сохранённые фильмы</NavLink></li>
             </ul>

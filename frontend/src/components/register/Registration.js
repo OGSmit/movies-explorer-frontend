@@ -102,7 +102,7 @@ function Registration({ onRegistration }) {
           </form>
           <div className='registration__container-bottom'>
             <p className='registration__link-description'>Уже зарегистрированы?</p>
-            <Link to='/sign-in' className='registration__link-login'>Войти</Link>
+            <Link to='/signin' className='registration__link-login'>Войти</Link>
           </div>
         </div>
       </section>
