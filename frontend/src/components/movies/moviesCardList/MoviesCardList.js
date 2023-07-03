@@ -6,7 +6,7 @@ function MoviesCardList({ inSaveMovies, isNeedMoreButton }) {
   return (
     <section className='movieCardList'>
       <ul className='movieCardList__list'>
-        <li className='movieCardList__item'><MoviesCard inSaveMovies={inSaveMovies} name={'В погоне за Бенкси'} /></li>
+        <li className='movieCardList__item'><MoviesCard inSaveMovies={inSaveMovies} name={'В погоне заВ погоне за БенксиВ погоне за БенксиВ погоне за Бенкси Бенкси'} /></li>
         <li className='movieCardList__item'><MoviesCard inSaveMovies={inSaveMovies} name={'Баския: Взрыв реальности'} /></li>
         <li className='movieCardList__item'><MoviesCard inSaveMovies={inSaveMovies} name={'В погоне за Бенкси'} /></li>
         <li className='movieCardList__item'><MoviesCard inSaveMovies={inSaveMovies} name={'Баския: Взрыв реальности'} /></li>

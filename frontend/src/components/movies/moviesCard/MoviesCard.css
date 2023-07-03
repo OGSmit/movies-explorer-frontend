@@ -1,12 +1,11 @@
 .moviesCard {
   width: 100%;
-  min-height: 134px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   gap: 20px;
   background-color: #2F2F2F;
-  padding: 6px 6px 6px 22px;
+  padding: 6px 6px 3px 22px;
   box-sizing: border-box;
 }
 
@@ -16,8 +15,8 @@
   grid-template-areas:
     'title'
     'duration'
-    'like';
-  max-height: 122px;
+    'like-icon';
+  /* max-height: 122px; */
 }
 
 .moviesCard__title {
@@ -31,7 +30,6 @@
   white-space: nowrap;
   overflow: hidden;
   text-align: start;
-  min-height: 44px;
   grid-area: title;
 }
 
@@ -58,7 +56,7 @@
   background-size: cover;
   border: 0;
   background-color: #2F2F2F;
-  grid-area: like;
+  grid-area: like-icon;
   align-self: start;
   margin-top: 10px;
 }
@@ -74,11 +72,13 @@
 
 .moviesCard__link {
   text-decoration: none;
+  height: 100%;
 }
 
 .moviesCard__poster {
   width: 220px;
   height: 122px;
+  flex-shrink: 0;
   object-fit: cover;
 }
 
@@ -86,17 +86,17 @@
   .moviesCard {
     flex-direction: column-reverse;
     padding: 0;
+    gap: 0;
     padding-bottom: 8px;
     max-height: fit-content;
   }
 
   .moviesCard__container {
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     grid-template-areas:
-      'title' 'like'
-      'duration';
+      'title like-icon'
+      'duration duration';
   }
 
   .moviesCard__poster {
@@ -111,19 +111,19 @@
     min-width: 258px;
     text-align: start;
     margin-left: 12px;
-    margin-top: -8px;
+    margin-top: 12px;
   }
 
   .moviesCard__like {
     justify-self: end;
     margin-right: 20px;
-    margin-top: -6px;
+    margin-top: 14px;
   }
 
   .moviesCard__duration {
-    margin-top: -1px;
     max-width: 228px;
     order: 3;
     margin-left: 12px;
+    align-self: end;
   }
 }

@@ -113,6 +113,7 @@
     gap: 16px;
     align-self: flex-end;
     margin-right: 12px;
+    padding-top: 28px;
   }
 
 }
@@ -149,5 +150,9 @@
     margin: 40px auto 0;
     padding: 0;
     gap: 12px;
+  }
+
+  .search-form__checkbox+label {
+    padding-left: 34px;
   }
 }
