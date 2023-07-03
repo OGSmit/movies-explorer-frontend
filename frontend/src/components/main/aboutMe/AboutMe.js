@@ -1,12 +1,10 @@
 import "./AboutMe.css"
 import avatar from '../../../images/bio__avatar.png'
-import { Element } from 'react-scroll';
 
 function AboutMe() {
 
   return (
     <section className="aboutMe" id="aboutMe">
-      <Element name="aboutMe">
         <h2 className="aboutMe__description">Студент</h2>
         <div className="aboutMe__container">
           <div className="aboutMe__container-bio">
@@ -19,7 +17,6 @@ function AboutMe() {
           </div>
           <img alt="фотография студента" src={avatar} className="aboutMe__avatar" />
         </div>
-      </Element>
     </section>
   )
 }

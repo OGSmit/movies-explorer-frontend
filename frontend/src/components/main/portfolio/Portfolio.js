@@ -6,7 +6,7 @@ function Portfolio() {
 
   return (
     <section className='portfolio'>
-      <p className='portfolio__description'>Портфолио</p>
+      <h2 className='portfolio__description'>Портфолио</h2>
       <nav className='portfolio__nav'>
         <ul className='portfolio__list'>
           <li><Link to='https://ogsmit.github.io/how-to-learn/' target="_blank" rel="noreferrer" className='portfolio__link'>

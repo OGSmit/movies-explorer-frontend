@@ -1,11 +1,9 @@
 import './AboutProject.css'
-import { Element } from 'react-scroll';
 
 function AboutProject() {
 
   return (
     <section className='aboutProject' id='aboutProject'>
-      <Element name="aboutProject">
         <h2 className='aboutProject__description'>О проекте</h2>
         <div className='aboutProject__container'>
           <div className='aboutProject__topic-stage'>
@@ -27,7 +25,6 @@ function AboutProject() {
             <p className='aboutProject__line-name'>Front-end</p>
           </div>
         </div>
-      </Element>
     </section>
   )
 }

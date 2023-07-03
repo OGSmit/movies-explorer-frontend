@@ -1,6 +1,6 @@
 .moviesCard {
   width: 100%;
-  max-height: 134px;
+  min-height: 134px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -17,7 +17,7 @@
     'title'
     'duration'
     'like';
-    max-height: 122px;
+  max-height: 122px;
 }
 
 .moviesCard__title {
@@ -31,8 +31,8 @@
   white-space: nowrap;
   overflow: hidden;
   text-align: start;
-  max-height: 44px;
-  grid-area: 'title';
+  min-height: 44px;
+  grid-area: title;
 }
 
 .moviesCard__duration {
@@ -42,7 +42,7 @@
   display: flex;
   align-items: center;
   color: #8B8B8B;
-  grid-area: 'duration';
+  grid-area: duration;
   margin: 0;
   align-self: normal;
   margin-bottom: 5px;
@@ -58,7 +58,7 @@
   background-size: cover;
   border: 0;
   background-color: #2F2F2F;
-  grid-area: 'like';
+  grid-area: like;
   align-self: start;
   margin-top: 10px;
 }
