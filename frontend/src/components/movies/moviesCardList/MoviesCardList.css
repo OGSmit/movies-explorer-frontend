@@ -32,6 +32,11 @@
   padding: 44px 0 19px;
 }
 
+.movieCardList__more_invisible {
+  padding: 18px 0 19px;
+}
+
+
 .movieCardList__button-more {
   display: flex;
   flex-direction: column;
@@ -51,6 +56,10 @@
   height: 36px;
 }
 
+.movieCardList__button-more_invisible {
+  visibility: hidden;
+}
+
 .movieCardList__button-more:hover {
   opacity: .8;
   cursor: pointer;
@@ -63,6 +72,10 @@
 
   .movieCardList__more {
     padding: 64px 0 62px;
+  }
+
+  .movieCardList__more_invisible {
+    padding: 37px 0 62px;
   }
 }
 
@@ -79,6 +92,10 @@
 
   .movieCardList__more {
     padding: 26px 0 62px;
+  }
+
+  .movieCardList__more_invisible {
+    padding: 0px 0 62px;
   }
 
   .movieCardList__button-more {
