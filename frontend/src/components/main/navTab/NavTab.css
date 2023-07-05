@@ -1,0 +1,51 @@
+.navTab {
+  padding: 24px 70px;
+  background-color: #272727;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navTab__list {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  list-style-type: none;
+  padding: 0;
+}
+
+.navTab__item {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  text-decoration-line: underline;
+  color: #FFFFFF;
+}
+
+.navTab__item:hover {
+  cursor: pointer;
+  opacity: .6;
+}
+
+@media (max-width: 460px) {
+  .navTab {
+    padding: 24px 50px;
+  }
+
+  .navTab__list {
+    gap: 25px;
+  }
+
+  .navTab__item {
+    font-size: 11px;
+    line-height: 16px;
+    max-height: 17px;
+  }
+}

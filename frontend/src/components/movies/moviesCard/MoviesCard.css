@@ -1,0 +1,127 @@
+.moviesCard {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  background-color: #2F2F2F;
+  padding: 6px 6px 3px 22px;
+  box-sizing: border-box;
+}
+
+.moviesCard__container {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    'title'
+    'duration'
+    'like-icon';
+  /* max-height: 122px; */
+}
+
+.moviesCard__title {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #FFFFFF;
+  margin: 0;
+  margin-top: 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: start;
+  grid-area: title;
+}
+
+.moviesCard__duration {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  color: #8B8B8B;
+  grid-area: duration;
+  margin: 0;
+  align-self: normal;
+  margin-bottom: 5px;
+}
+
+.moviesCard__like {
+  width: 14px;
+  height: 12px;
+  background-image: url(../../../images/like_icon.svg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 0;
+  background-color: #2F2F2F;
+  grid-area: like-icon;
+  align-self: start;
+  margin-top: 10px;
+}
+
+.moviesCard__like_delete {
+  background-image: url(../../../images/delete_icon.svg);
+}
+
+.moviesCard__like:hover {
+  opacity: .8;
+  cursor: pointer;
+}
+
+.moviesCard__link {
+  text-decoration: none;
+}
+
+.moviesCard__poster {
+  width: 220px;
+  height: 122px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+@media (max-width: 600px) {
+  .moviesCard {
+    flex-direction: column-reverse;
+    padding: 0;
+    gap: 0;
+    padding-bottom: 8px;
+    max-height: fit-content;
+  }
+
+  .moviesCard__container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-areas:
+      'title like-icon'
+      'duration duration';
+  }
+
+  .moviesCard__poster {
+    width: 100%;
+    max-height: 168px;
+    height: 100%;
+  }
+
+  .moviesCard__title {
+    font-size: 12px;
+    line-height: 15px;
+    min-width: 258px;
+    text-align: start;
+    margin-left: 12px;
+    margin-top: 12px;
+  }
+
+  .moviesCard__like {
+    justify-self: end;
+    margin-right: 20px;
+    margin-top: 14px;
+  }
+
+  .moviesCard__duration {
+    max-width: 228px;
+    order: 3;
+    margin-left: 12px;
+    align-self: end;
+  }
+}
