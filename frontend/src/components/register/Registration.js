@@ -3,7 +3,7 @@ import logo from '../../images/header__logo.svg';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-function Registration({ onRegistration }) {
+function Registration({ onRegistration, onLogin }) {
   const [formValue, setFormValue] = useState({});
   const [formErrorMessage, setFormErrorMessage] = useState({});
   const [fetchErrorMessage, setFetchErrorMessage] = useState('');
@@ -58,8 +58,10 @@ function Registration({ onRegistration }) {
     e.preventDefault();
     const { name, email, password } = formValue;
     onRegistration(name, email, password, e)
+      .then(() => {
+        onLogin(email, password, e)
+      })
       .catch(err => {
-        console.log(err);
         setFetchErrorMessage(err)
       })
   }

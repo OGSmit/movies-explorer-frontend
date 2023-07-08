@@ -40,7 +40,6 @@ function App() {
   async function handleRegistration(name, email, password, e) {
     return register(name, email, password)
       .then((res) => {
-        navigate("/signin", { replace: true })
         e.target.reset()
       })
       // .catch(err => alert(err))
@@ -54,7 +53,6 @@ function App() {
           setIsloggedIn(true);
           navigate("/movies", { replace: true })
         }
-        console.log(res)
         e.target.reset()
       })
       .catch(err => alert(err))
@@ -81,7 +79,7 @@ function App() {
 
         <Route path='/' element={<Main isloggedIn={isloggedIn} />} />
 
-        <Route path='/signup' element={<Registration onRegistration={handleRegistration} />} />
+        <Route path='/signup' element={<Registration onLogin={handleLogin} onRegistration={handleRegistration} />} />
 
         <Route path='/signin' element={<Login onLogin={handleLogin} />} />
 
