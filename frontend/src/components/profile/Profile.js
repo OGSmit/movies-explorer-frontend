@@ -3,7 +3,7 @@ import Header from '../Header';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function Profile({ isloggedIn }) {
+function Profile({ goExit, isloggedIn }) {
   const navigate = useNavigate();
 
   const [formValue, setFormValue] = useState({});
@@ -36,8 +36,8 @@ function Profile({ isloggedIn }) {
     })
   }
 
-  const goExit = () => {
-    navigate('/')
+  const doExit = () => {
+     goExit()
   }
 
   const handelEdit = () => {
@@ -95,7 +95,7 @@ function Profile({ isloggedIn }) {
               <button onClick={handelEdit} type='button' className='profile__button-edit'>Редактировать</button>
             }
           </form>
-          <button onClick={goExit} type='button' className={gonnaEdit ? 'profile__button-exit profile__button-exit_invisible' : 'profile__button-exit'}>Выйти из аккаунта</button>
+          <button onClick={doExit} type='button' className={gonnaEdit ? 'profile__button-exit profile__button-exit_invisible' : 'profile__button-exit'}>Выйти из аккаунта</button>
         </section>
       </main>
     </>

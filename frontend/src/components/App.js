@@ -10,28 +10,31 @@ import SavedMovies from '../components/savedMovies/SavedMovies';
 import Profile from '../components/profile/Profile';
 import NotFound from './notFound/NotFound';
 import ProtectedRouteElement from './ProtectedRoute';
+import { getInitialMovies } from '../utils/MoviesApi';
 
 function App() {
+  const C = (i) => console.log(i)
+
   const navigate = useNavigate();
 
-  const [isloggedIn, setIsloggedIn] = useState(true);
+  const [isloggedIn, setIsloggedIn] = useState(false);
 
-  // useEffect(() => {
-  //   function handleTokenCheck() {
-  //     const jwt = localStorage.getItem('jwt');
-  //     if (jwt) {
-  //       return tokencheck(jwt).then((res) => {
-  //         setIsloggedIn(true)
-  //       })
-  //         .then(() => {
-  //           navigate("/", { replace: true })
-  //         })
-  //         .catch(err => console.log(err))
-  //     }
-  //   }
-  //   handleTokenCheck()
-  //   return () => { }
-  // }, [])
+  useEffect(() => {
+    function handleTokenCheck() {
+      const jwt = localStorage.getItem('jwt');
+      if (jwt) {
+        return tokencheck(jwt).then((res) => {
+          setIsloggedIn(true)
+        })
+          .then(() => {
+            navigate("/", { replace: true })
+          })
+          .catch(err => console.log(err))
+      }
+    }
+    handleTokenCheck()
+    return () => { }
+  }, [])
 
   async function handleRegistration(name, email, password, e) {
     return register(name, email, password)
@@ -56,6 +59,21 @@ function App() {
       .catch(err => alert(err))
   }
 
+ async function goExit() {
+    localStorage.removeItem('jwt');
+    setIsloggedIn(false)
+    navigate('/', { replace: true });
+  }
+
+  async function getAllMovies() {
+    return getInitialMovies()
+    .then(res => C(res))
+  }
+
+  useEffect(() => {
+    getAllMovies()
+  },[]);
+
   return (
     <div className="App">
       <Routes>
@@ -70,7 +88,7 @@ function App() {
 
         <Route path='/movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={Movies} isloggedIn={isloggedIn} />} />
 
-        <Route path='/profile' element={<ProtectedRouteElement loggedIn={isloggedIn} element={Profile} isloggedIn={isloggedIn} />} />
+        <Route path='/profile' element={<ProtectedRouteElement goExit={goExit} loggedIn={isloggedIn} element={Profile} isloggedIn={isloggedIn} />} />
 
         <Route path='*' element={<NotFound />} />
 
