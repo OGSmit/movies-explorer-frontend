@@ -6,6 +6,8 @@ import { useState } from 'react';
 function Registration({ onRegistration }) {
   const [formValue, setFormValue] = useState({});
   const [formErrorMessage, setFormErrorMessage] = useState({});
+  const [fetchErrorMessage, setFetchErrorMessage] = useState('');
+
   const isFormFieldsValid = !formErrorMessage.name &&
     !formErrorMessage.email &&
     !formErrorMessage.password &&
@@ -56,6 +58,10 @@ function Registration({ onRegistration }) {
     e.preventDefault();
     const { name, email, password } = formValue;
     onRegistration(name, email, password, e)
+      .catch(err => {
+        console.log(err);
+        setFetchErrorMessage(err)
+      })
   }
 
   return (
@@ -97,7 +103,10 @@ function Registration({ onRegistration }) {
               type="password"
               placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;' //placeholder для макета, потом уберу
               onChange={handleChangePassword}></input>
-            <span className={formErrorMessage.password === 'undefined' ? 'registration__error-invisible' : 'registration__error'}>{formErrorMessage.password || 'что-то пошло не так...'}</span>
+            <span className={formErrorMessage.password === 'undefined' ? 'registration__error-invisible' : 'registration__error'}>{formErrorMessage.password}</span>
+            <p className={fetchErrorMessage.length > 0 ? 'registration__fetch-error' : 'registration__fetch-error registration__fetch-error_invisible'}>
+              {fetchErrorMessage === 'Ошибка: 409' ? 'Пользователь с таким email уже существует.' : 'При регистрации пользователя произошла ошибка.'}
+            </p>
             <button type='submit' disabled={!isFormFieldsValid} className='registration__button-submit' >Зарегистрироваться</button>
           </form>
           <div className='registration__container-bottom'>

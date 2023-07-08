@@ -18,6 +18,7 @@ function App() {
   const navigate = useNavigate();
 
   const [isloggedIn, setIsloggedIn] = useState(false);
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     function handleTokenCheck() {
@@ -39,10 +40,10 @@ function App() {
   async function handleRegistration(name, email, password, e) {
     return register(name, email, password)
       .then((res) => {
-        console.log(res)
+        navigate("/signin", { replace: true })
         e.target.reset()
       })
-      .catch(err => alert(err))
+      // .catch(err => alert(err))
   }
 
   async function handleLogin(email, password, e) {
