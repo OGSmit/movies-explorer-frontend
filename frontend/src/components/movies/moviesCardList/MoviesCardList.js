@@ -1,39 +1,32 @@
-import './MoviesCardList.css'
+import React, { useState } from 'react';
+import './MoviesCardList.css';
 import MoviesCard from '../moviesCard/MoviesCard';
 
-function MoviesCardList({ inSaveMovies, isNeedMoreButton, allMovies }) {
+function MoviesCardList({ filteredMovies, isNeedMoreButton }) {
+  const [visibleMovies, setVisibleMovies] = useState(3);
 
-  console.log(allMovies)
+  const handleLoadMore = () => {
+    setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + 3);
+  };
+
+  const renderedMovies = filteredMovies.slice(0, visibleMovies);
 
   return (
     <section className='movieCardList'>
       <ul className='movieCardList__list'>
-        {/* <li className='movieCardList__item'><MoviesCard inSaveMovies={inSaveMovies} name={'В погоне заВ погоне за БенксиВ погоне за БенксиВ погоне за Бенкси Бенкси'} /></li> */}
-        {allMovies.forEach((item) => {
-        return (<li className='movieCardList__item'>
-            <MoviesCard inSaveMovies={inSaveMovies}
-              name={item.nameRu}
-              poster={item.image.previewUrl}
-              link={item.trailerLink}
-              duration={item.duration} />
-          </li>)
-        })}
+        {renderedMovies.map((movie) => (
+          <MoviesCard key={movie.id} name={movie.nameRU} duration={movie.duration} link={movie.trailerLink} poster={movie.image.url} />
+        ))}
       </ul>
-      {isNeedMoreButton ?
-        <>
-          <div className='movieCardList__more'>
-            <button type='button' className='movieCardList__button-more'>Еще</button>
-          </div>
-        </>
-        :
-        <>
-          <div className='movieCardList__more movieCardList__more_invisible'>
-            <button type='button' className='movieCardList__button-more movieCardList__button-more_invisible'>Еще</button>
-          </div>
-        </>}
+      {isNeedMoreButton && filteredMovies.length > visibleMovies && (
+        <div className='movieCardList__more'>
+          <button type='button' className='movieCardList__button-more' onClick={handleLoadMore}>
+            Еще
+          </button>
+        </div>
+      )}
     </section>
-  )
+  );
 }
 
-// BEM validation done!
 export default MoviesCardList;

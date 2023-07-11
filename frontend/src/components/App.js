@@ -10,7 +10,6 @@ import SavedMovies from '../components/savedMovies/SavedMovies';
 import Profile from '../components/profile/Profile';
 import NotFound from './notFound/NotFound';
 import ProtectedRouteElement from './ProtectedRoute';
-import { getInitialMovies } from '../utils/MoviesApi';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function App() {
@@ -18,7 +17,6 @@ function App() {
 
   const [isloggedIn, setIsloggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({})
-  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     function handleTokenCheck() {
@@ -33,7 +31,6 @@ function App() {
         })
           .then(() => {
             navigate("/", { replace: true })
-            console.log(currentUser)
           })
           .catch(err => console.log(err))
       }
@@ -81,17 +78,6 @@ function App() {
     navigate('/', { replace: true });
   }
 
-  async function getAllMovies() {
-    return getInitialMovies()
-      .then(res => {
-        setMovies(res);
-      })
-  }
-
-  useEffect(() => {
-    getAllMovies()
-  }, []);
-
   return (
     <div className="App">
       <CurrentUserContext.Provider value={currentUser} >
@@ -103,9 +89,9 @@ function App() {
 
           <Route path='/signin' element={<Login onLogin={handleLogin} />} />
 
-          <Route path='/saved-movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={SavedMovies} allMovies={movies} isloggedIn={isloggedIn} />} />
+          <Route path='/saved-movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={SavedMovies} isloggedIn={isloggedIn} />} />
 
-          <Route path='/movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={Movies} allMovies={movies} isloggedIn={isloggedIn} />} />
+          <Route path='/movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={Movies} isloggedIn={isloggedIn} />} />
 
           <Route path='/profile' element={<ProtectedRouteElement goExit={goExit} loggedIn={isloggedIn} element={Profile} onUserEdit={handleUserEdit} isloggedIn={isloggedIn} />} />
 
