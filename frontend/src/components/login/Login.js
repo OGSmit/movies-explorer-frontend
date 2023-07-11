@@ -6,6 +6,7 @@ import { useState } from 'react';
 function Login({ onLogin }) {
   const [formValue, setFormValue] = useState({});
   const [formErrorMessage, setFormErrorMessage] = useState({});
+  const [fetchErrorMessage, setFetchErrorMessage] = useState('');
   const isFormFieldsValid = !formErrorMessage.email &&
     !formErrorMessage.passwordform &&
     formErrorMessage.email == '' &&
@@ -40,7 +41,8 @@ function Login({ onLogin }) {
   function handleSubmit(e) {
     e.preventDefault();
     const { email, password } = formValue;
-    onLogin(email, password, e);
+    onLogin(email, password, e)
+    .catch(err => setFetchErrorMessage(err));
   }
 
   return (
@@ -71,6 +73,9 @@ function Login({ onLogin }) {
               type="password"
               onChange={handleChangePassword}></input>
             <span className={formErrorMessage.password === 'undefined' ? 'login__error-invisible' : 'login__error'}>{formErrorMessage.password || ''}</span>
+            <p className={fetchErrorMessage.length > 0 ? 'login__fetch-error' : 'login__fetch-error login__fetch-error_invisible'}>
+              {fetchErrorMessage}
+            </p>
             <button type='submit' disabled={!isFormFieldsValid} className='login__button-submit'>Войти</button>
           </form>
           <div className='login__container-bottom'>

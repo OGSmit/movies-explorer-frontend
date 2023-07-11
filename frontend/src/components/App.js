@@ -11,6 +11,7 @@ import Profile from '../components/profile/Profile';
 import NotFound from './notFound/NotFound';
 import ProtectedRouteElement from './ProtectedRoute';
 import { getInitialMovies } from '../utils/MoviesApi';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function App() {
   const C = (i) => console.log(i)
@@ -18,6 +19,7 @@ function App() {
   const navigate = useNavigate();
 
   const [isloggedIn, setIsloggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({})
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -26,23 +28,29 @@ function App() {
       if (jwt) {
         return tokencheck(jwt).then((res) => {
           setIsloggedIn(true)
+          setCurrentUser({
+            ...currentUser,
+            ...res
+          });
         })
           .then(() => {
             navigate("/", { replace: true })
+            console.log(currentUser)
           })
           .catch(err => console.log(err))
       }
     }
+
     handleTokenCheck()
-    return () => { }
-  }, [])
+    return () => {}
+  }, []);
 
   async function handleRegistration(name, email, password, e) {
     return register(name, email, password)
       .then((res) => {
         e.target.reset()
       })
-      // .catch(err => alert(err))
+    // .catch(err => alert(err))
   }
 
   async function handleLogin(email, password, e) {
@@ -55,10 +63,10 @@ function App() {
         }
         e.target.reset()
       })
-      .catch(err => alert(err))
+    // .catch(err => alert(err))
   }
 
- async function goExit() {
+  async function goExit() {
     localStorage.removeItem('jwt');
     setIsloggedIn(false)
     navigate('/', { replace: true });
@@ -66,32 +74,36 @@ function App() {
 
   async function getAllMovies() {
     return getInitialMovies()
-    .then(res => C(res))
+      .then(res => {
+        setMovies(res);
+      })
   }
 
   useEffect(() => {
     getAllMovies()
-  },[]);
+  }, []);
 
   return (
     <div className="App">
-      <Routes>
+      <CurrentUserContext.Provider value={currentUser} >
+        <Routes>
 
-        <Route path='/' element={<Main isloggedIn={isloggedIn} />} />
+          <Route path='/' element={<Main isloggedIn={isloggedIn} />} />
 
-        <Route path='/signup' element={<Registration onLogin={handleLogin} onRegistration={handleRegistration} />} />
+          <Route path='/signup' element={<Registration onLogin={handleLogin} onRegistration={handleRegistration} />} />
 
-        <Route path='/signin' element={<Login onLogin={handleLogin} />} />
+          <Route path='/signin' element={<Login onLogin={handleLogin} />} />
 
-        <Route path='/saved-movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={SavedMovies} isloggedIn={isloggedIn} />} />
+          <Route path='/saved-movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={SavedMovies} allMovies={movies} isloggedIn={isloggedIn} />} />
 
-        <Route path='/movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={Movies} isloggedIn={isloggedIn} />} />
+          <Route path='/movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={Movies} allMovies={movies} isloggedIn={isloggedIn} />} />
 
-        <Route path='/profile' element={<ProtectedRouteElement goExit={goExit} loggedIn={isloggedIn} element={Profile} isloggedIn={isloggedIn} />} />
+          <Route path='/profile' element={<ProtectedRouteElement goExit={goExit} loggedIn={isloggedIn} element={Profile} isloggedIn={isloggedIn} />} />
 
-        <Route path='*' element={<NotFound />} />
+          <Route path='*' element={<NotFound />} />
 
-      </Routes>
+        </Routes>
+      </CurrentUserContext.Provider>
 
     </div>
   );

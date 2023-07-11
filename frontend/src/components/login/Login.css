@@ -76,7 +76,7 @@
   border: 0;
   width: 100%;
   height: 45px;
-  margin-top: 203px;
+  margin-top: 15px;
 }
 
 .login__button-submit[disabled] {
@@ -128,6 +128,18 @@
   text-align: start;
   min-width: 100%;
   min-height: 16px;
+}
+
+.login__fetch-error {
+  color: #FF004C;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 400;
+  margin-top: 94px;
+}
+
+.login__fetch-error_invisible {
+  visibility: hidden;
 }
 
 .login__error-invisible {
