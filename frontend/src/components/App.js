@@ -1,7 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { register, login, tokencheck } from '../utils/Auth';
+import { register, login, tokencheck, userEdit } from '../utils/Auth';
 import Main from './main/Main';
 import Movies from './movies/Movies';
 import Registration from '../components/register/Registration';
@@ -14,8 +14,6 @@ import { getInitialMovies } from '../utils/MoviesApi';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function App() {
-  const C = (i) => console.log(i)
-
   const navigate = useNavigate();
 
   const [isloggedIn, setIsloggedIn] = useState(false);
@@ -42,7 +40,7 @@ function App() {
     }
 
     handleTokenCheck()
-    return () => {}
+    return () => { }
   }, []);
 
   async function handleRegistration(name, email, password, e) {
@@ -64,6 +62,18 @@ function App() {
         e.target.reset()
       })
     // .catch(err => alert(err))
+  }
+
+  async function handleUserEdit(name, email) {
+    return userEdit(name, email)
+      .then(res => {
+        console.log(res)
+        setCurrentUser({
+          ...currentUser,
+          ...res
+        })
+        navigate("/movies", { replace: true })
+      })
   }
 
   async function goExit() {
@@ -98,7 +108,7 @@ function App() {
 
           <Route path='/movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={Movies} allMovies={movies} isloggedIn={isloggedIn} />} />
 
-          <Route path='/profile' element={<ProtectedRouteElement goExit={goExit} loggedIn={isloggedIn} element={Profile} isloggedIn={isloggedIn} />} />
+          <Route path='/profile' element={<ProtectedRouteElement goExit={goExit} loggedIn={isloggedIn} element={Profile} setCurrentUser={setCurrentUser} onUserEdit={handleUserEdit} isloggedIn={isloggedIn} />} />
 
           <Route path='*' element={<NotFound />} />
 

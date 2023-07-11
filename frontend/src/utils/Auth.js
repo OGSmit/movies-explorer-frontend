@@ -33,6 +33,21 @@ export const login = ( email, password) => {
   }).then(res => checkResponse(res))
 };
 
+export const userEdit = (name, email) => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: 'PATCH',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+    },
+    body: JSON.stringify({
+      'name': name,
+      'email': email,
+    })
+  }).then(res => checkResponse(res))
+};
+
 export const tokencheck = () => {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',

@@ -4,7 +4,7 @@ import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-function Profile({ goExit, isloggedIn }) {
+function Profile({ goExit, isloggedIn, onUserEdit, setCurrentUser }) {
   const navigate = useNavigate();
 
   const userInfo = useContext(CurrentUserContext);
@@ -12,6 +12,8 @@ function Profile({ goExit, isloggedIn }) {
   const [formValue, setFormValue] = useState({});
   const [formErrorMessage, setFormErrorMessage] = useState({});
   const [gonnaEdit, setGonnaEdit] = useState(false)
+
+  const [editError, setEditError] = useState('')
 
   function handleChangeName(e) {
     const { name, value } = e.target;
@@ -40,15 +42,24 @@ function Profile({ goExit, isloggedIn }) {
   }
 
   const doExit = () => {
-     goExit()
+    goExit()
   }
 
-  const handelEdit = () => {
+  const handelGonnaEdit = () => {
     const inputs = document.querySelectorAll('.profile__input');
     inputs.forEach(input => {
       input.disabled = false;
     });
     setGonnaEdit(true);
+  }
+
+  const handleUserEdit = () => {
+    const { name = userInfo.data.name, email = userInfo.data.email } = formValue;
+    onUserEdit(name, email)
+      .catch((err) => {
+        (err === 'Ошибка: 409') ?
+        setEditError('Пользователь с таким email уже существует.') : setEditError('При регистрации пользователя произошла ошибка.')
+      })
   }
 
 
@@ -87,10 +98,10 @@ function Profile({ goExit, isloggedIn }) {
             </div>
             {gonnaEdit ?
               <>
-                <span className='profile__submit-error profile__submit-error_invisible'>При обновлении профиля произошла ошибка.</span>
-                <button  type='submit' className='profile__button-save'>Сохранить</button>
+                <span className={editError.length > 1 ? 'profile__submit-error' : 'profile__submit-error profile__submit-error_invisible' }>{editError}</span>
+                <button onClick={handleUserEdit}  type='button' className='profile__button-save'>Сохранить</button>
               </> :
-              <button onClick={handelEdit} type='button' className='profile__button-edit'>Редактировать</button>
+              <button onClick={handelGonnaEdit} type='button' className='profile__button-edit'>Редактировать</button>
             }
           </form>
           <button onClick={doExit} type='button' className={gonnaEdit ? 'profile__button-exit profile__button-exit_invisible' : 'profile__button-exit'}>Выйти из аккаунта</button>
