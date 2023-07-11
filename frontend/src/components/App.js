@@ -67,7 +67,6 @@ function App() {
   async function handleUserEdit(name, email) {
     return userEdit(name, email)
       .then(res => {
-        console.log(res)
         setCurrentUser({
           ...currentUser,
           ...res
@@ -108,7 +107,7 @@ function App() {
 
           <Route path='/movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={Movies} allMovies={movies} isloggedIn={isloggedIn} />} />
 
-          <Route path='/profile' element={<ProtectedRouteElement goExit={goExit} loggedIn={isloggedIn} element={Profile} setCurrentUser={setCurrentUser} onUserEdit={handleUserEdit} isloggedIn={isloggedIn} />} />
+          <Route path='/profile' element={<ProtectedRouteElement goExit={goExit} loggedIn={isloggedIn} element={Profile} onUserEdit={handleUserEdit} isloggedIn={isloggedIn} />} />
 
           <Route path='*' element={<NotFound />} />
 

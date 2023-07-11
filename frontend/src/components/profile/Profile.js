@@ -1,10 +1,10 @@
 import './Profile.css'
 import Header from '../Header';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-function Profile({ goExit, isloggedIn, onUserEdit, setCurrentUser }) {
+function Profile({ goExit, isloggedIn, onUserEdit }) {
   const navigate = useNavigate();
 
   const userInfo = useContext(CurrentUserContext);
@@ -14,6 +14,8 @@ function Profile({ goExit, isloggedIn, onUserEdit, setCurrentUser }) {
   const [gonnaEdit, setGonnaEdit] = useState(false)
 
   const [editError, setEditError] = useState('')
+
+  const [isFormValid, setIsFormValid] = useState(false);
 
   function handleChangeName(e) {
     const { name, value } = e.target;
@@ -25,7 +27,8 @@ function Profile({ goExit, isloggedIn, onUserEdit, setCurrentUser }) {
     setFormErrorMessage({
       ...formErrorMessage,
       [name]: e.target.validationMessage
-    })
+    });
+     setIsFormValid(e.target.validity.valid);
   }
 
   function handleChangeEmail(e) {
@@ -38,7 +41,9 @@ function Profile({ goExit, isloggedIn, onUserEdit, setCurrentUser }) {
     setFormErrorMessage({
       ...formErrorMessage,
       [name]: e.target.validationMessage
-    })
+    });
+
+    setIsFormValid(e.target.validity.valid);
   }
 
   const doExit = () => {
@@ -58,10 +63,9 @@ function Profile({ goExit, isloggedIn, onUserEdit, setCurrentUser }) {
     onUserEdit(name, email)
       .catch((err) => {
         (err === 'Ошибка: 409') ?
-        setEditError('Пользователь с таким email уже существует.') : setEditError('При регистрации пользователя произошла ошибка.')
+          setEditError('Пользователь с таким email уже существует.') : setEditError('При регистрации пользователя произошла ошибка.')
       })
   }
-
 
   return (
     <>
@@ -98,8 +102,8 @@ function Profile({ goExit, isloggedIn, onUserEdit, setCurrentUser }) {
             </div>
             {gonnaEdit ?
               <>
-                <span className={editError.length > 1 ? 'profile__submit-error' : 'profile__submit-error profile__submit-error_invisible' }>{editError}</span>
-                <button onClick={handleUserEdit}  type='button' className='profile__button-save'>Сохранить</button>
+                <span className={editError.length > 1 ? 'profile__submit-error' : 'profile__submit-error profile__submit-error_invisible'}>{editError}</span>
+                <button onClick={handleUserEdit} disabled={!isFormValid} type='button' className='profile__button-save'>Сохранить</button>
               </> :
               <button onClick={handelGonnaEdit} type='button' className='profile__button-edit'>Редактировать</button>
             }
