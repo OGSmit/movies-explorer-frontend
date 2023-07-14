@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.ogsmit.nomoredomains.rocks';
+const BASE_URL = 'https://api.ogsmit.nomoredomains.rocks';
 
 function checkResponse(res) {
   if(res.ok) {

@@ -1,20 +1,31 @@
 import './MoviesCard.css'
-import defaultImage from '../../../images/movieCard__poster.png'
+import React, { useState } from 'react';
 
-function MoviesCard({ name, poster, link, duration }) {
-  const BASE_URL = 'https://api.nomoreparties.co'
+
+function MoviesCard({ name, posterLink , link, duration, onClickLikeButton, isSavedMovie }) {
   const hours = Math.floor(duration / 60);
   const minutes = duration % 60;
-  
+
+  const [isCliked, setIsCliked] = useState(false)
+
+  async function handleSaveMovie() {
+    try {
+      await onClickLikeButton();
+      setIsCliked(true);
+    } catch (error) {
+      alert(error);
+    }
+  }
+
   return (
     <div className='moviesCard'>
       <div className='moviesCard__container'>
         <h2 className='moviesCard__title'>{name}</h2>
         <p className='moviesCard__duration'>{`${hours}ч ${minutes}м`}</p>
-        <button type='button' className='moviesCard__like' ></button>
+        <button onClick={isCliked ? null : handleSaveMovie} type='button' className={`${isSavedMovie? 'moviesCard__like moviesCard__like_delete' : 'moviesCard__like'} ${isCliked ? 'moviesCard__like_liked' : ''}`} ></button>
       </div>
       <a href={link || 'https://www.yandex.ru'} className='moviesCard__link' target="_blank" rel="noreferrer">
-        <img alt={`постер к фильму ${name}`} className='moviesCard__poster' src={`${BASE_URL}${poster}` || defaultImage}></img>
+        <img alt={`постер к фильму ${name}`} className='moviesCard__poster' src={posterLink}></img>
       </a>
     </div>
   )

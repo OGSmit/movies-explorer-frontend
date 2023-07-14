@@ -12,7 +12,6 @@ function Header({ isloggedIn }) {
 
   const isMainPage = location.pathname === '/';
 
-  // заблочил скролл при открытом бургере 
   useEffect(() => {
     const body = document.querySelector('body');
 

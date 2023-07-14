@@ -67,7 +67,7 @@ function Movies({ isloggedIn }) {
       <Header isloggedIn={isloggedIn} />
       <main>
         <SearchForm onSearch={handleSearch} />
-        {filteredMovies.length >= 1 ? <MoviesCardList filteredMovies={filteredMovies} isNeedMoreButton={true} /> : ''}
+        {filteredMovies.length >= 1 ? <MoviesCardList movies={filteredMovies} isNeedMoreButton={true} /> : <span className='empty-result'>Упс, ничего не найдено...</span>}
       </main>
       <Footer />
     </>
