@@ -21,11 +21,6 @@ function Movies({ isloggedIn }) {
     getSavedMovies()
   }, []);
 
-  useEffect(() => {
-    console.log(savedMovies, 'savedMovies')
-    console.log(beatMovies, 'beatMovies')
-  }, [savedMovies, beatMovies])
-
   async function getSavedMovies() {
     return mainApi.getInitialMovie()
       .then(res => {
@@ -47,8 +42,7 @@ function Movies({ isloggedIn }) {
   const handleSearch = (searchOptions) => {
     localStorage.setItem('searchOptions', JSON.stringify(searchOptions))
     const { query, isShortFilm } = searchOptions;
-    const beatTestMovies = JSON.parse(localStorage.getItem('beatMovie'))
-    const filtered = beatTestMovies.filter((movie) => {
+    const filtered = beatMovies.filter((movie) => {
       const isIncluded = movie.nameRU.toLowerCase().includes(query.toLowerCase());
       const isShort = movie.duration <= 40;
       if (isShortFilm) {
@@ -86,14 +80,18 @@ function Movies({ isloggedIn }) {
       .catch(err => alert(err))
   }
 
+  useEffect(() => {
+    localStorage.setItem('savedMovie', JSON.stringify(savedMovies))
+  }, [savedMovies])
+
   return (
     <>
       <Header isloggedIn={isloggedIn} />
       <main className='main'>
         <SearchForm
-        onSearch={handleSearch}
-        query={JSON.parse(localStorage.getItem('searchOptions')).query}
-        checkBox={JSON.parse(localStorage.getItem('searchOptions')).isShortFilm}/>
+          onSearch={handleSearch}
+          query={JSON.parse(localStorage.getItem('searchOptions')).query}
+          checkBox={JSON.parse(localStorage.getItem('searchOptions')).isShortFilm} />
         {isEmptyResult ? <span className='empty-result'>Ничего не найдено</span> : null}
         <MoviesCardList
           movies={JSON.parse(localStorage.getItem('searchResult')) || filteredMovies}

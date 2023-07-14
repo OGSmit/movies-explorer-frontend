@@ -1,12 +1,9 @@
 import './Profile.css'
 import Header from '../Header';
-import { useState, useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useContext} from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function Profile({ goExit, isloggedIn, onUserEdit }) {
-  const navigate = useNavigate();
-
   const userInfo = useContext(CurrentUserContext);
 
   const [formValue, setFormValue] = useState({});
