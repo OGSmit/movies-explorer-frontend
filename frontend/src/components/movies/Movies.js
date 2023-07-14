@@ -26,15 +26,11 @@ function Movies({ isloggedIn }) {
     console.log(beatMovies, 'beatMovies')
   }, [savedMovies, beatMovies])
 
-  // useEffect(() => {
-  //   const searchOptions = JSON.parse(localStorage.getItem('searchOptions'))
-  //   handleSearch(searchOptions)
-  // }, [])
-
   async function getSavedMovies() {
     return mainApi.getInitialMovie()
       .then(res => {
         setSavedMovies(res)
+        localStorage.setItem('savedMovie', JSON.stringify(res))
       })
       .catch(err => alert(err))
   }
@@ -49,6 +45,7 @@ function Movies({ isloggedIn }) {
   }
 
   const handleSearch = (searchOptions) => {
+    localStorage.setItem('searchOptions', JSON.stringify(searchOptions))
     const { query, isShortFilm } = searchOptions;
     const beatTestMovies = JSON.parse(localStorage.getItem('beatMovie'))
     const filtered = beatTestMovies.filter((movie) => {
@@ -93,7 +90,10 @@ function Movies({ isloggedIn }) {
     <>
       <Header isloggedIn={isloggedIn} />
       <main className='main'>
-        <SearchForm onSearch={handleSearch} />
+        <SearchForm
+        onSearch={handleSearch}
+        query={JSON.parse(localStorage.getItem('searchOptions')).query}
+        checkBox={JSON.parse(localStorage.getItem('searchOptions')).isShortFilm}/>
         {isEmptyResult ? <span className='empty-result'>Ничего не найдено</span> : null}
         <MoviesCardList
           movies={JSON.parse(localStorage.getItem('searchResult')) || filteredMovies}

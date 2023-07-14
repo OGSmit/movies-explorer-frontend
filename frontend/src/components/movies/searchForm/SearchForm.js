@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './SearchForm.css';
 
-function SearchForm({ onSearch }) {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [isChecked, setIsChecked] = useState(false);
-
+function SearchForm({ onSearch, query, checkBox }) {
+  const [searchQuery, setSearchQuery] = useState(query);
+  const [isChecked, setIsChecked] = useState(checkBox);
+  
   const handleInputChange = (event) => {
     setSearchQuery(event.target.value);
   };
