@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './MoviesCardList.css';
 import MoviesCard from '../moviesCard/MoviesCard';
 import mainApi from '../../../utils/MainApi';
@@ -7,34 +7,18 @@ import { BASE_URL } from '../../../constants/constants';
 
 function MoviesCardList({ movies, isNeedMoreButton, onDelete }) {
 
-  // const [filteredMovies, setFilteredMovies] = useState([])
-  const [visibleMovies, setVisibleMovies] = useState(3);
+
+  const [visibleMovies, setVisibleMovies] = useState(7);
   const location = useLocation();
 
   const isSavedMovie = location.pathname === '/saved-movies';
-
-// useEffect(() => {
-//   setFilteredMovies([...movies])
-// }, [])
 
   async function handleSaveMovie(movie) {
     return mainApi.addMovie(movie)
   }
 
-  // async function handleDeleteMovie(id) {
-  //   return mainApi.removeMovie(id)
-  //     .then(res => {
-  //       const updatedFilteredMovies = filteredMovies.filter((movie) => {
-  //         if (movie._id !== res.data._id) {
-  //           return movie
-  //         }
-  //       })
-  //       setFilteredMovies([...updatedFilteredMovies])
-  //     })
-  // }
-
   const handleLoadMore = () => {
-    setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + 3);
+    setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + 7);
   };
 
   const renderedMovies = movies.slice(0, visibleMovies);

@@ -1,6 +1,6 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate, Navigate } from "react-router-dom";
 import { register, login, tokencheck, userEdit } from '../utils/Auth';
 import Main from './main/Main';
 import Movies from './movies/Movies';
@@ -16,6 +16,7 @@ function App() {
   const navigate = useNavigate();
 
   const [isloggedIn, setIsloggedIn] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState({})
 
   useEffect(() => {
@@ -85,9 +86,9 @@ function App() {
 
           <Route path='/' element={<Main isloggedIn={isloggedIn} />} />
 
-          <Route path='/signup' element={<Registration onLogin={handleLogin} onRegistration={handleRegistration} />} />
+          <Route path='/signup' element={isloggedIn ? <Navigate to='/' /> : <Registration onLogin={handleLogin} onRegistration={handleRegistration} />} />
 
-          <Route path='/signin' element={<Login onLogin={handleLogin} />} />
+          <Route path='/signin' element={isloggedIn ? <Navigate to='/' /> : <Login onLogin={handleLogin} />} />
 
           <Route path='/saved-movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={SavedMovies} isloggedIn={isloggedIn} />} />
 
