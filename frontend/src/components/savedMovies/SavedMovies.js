@@ -17,6 +17,7 @@ function SavedMovies({ isloggedIn }) {
         const updatedFilteredMovies = savedMovies.filter((movie) => movie._id !== res.data._id)
         setSavedMovies(updatedFilteredMovies)
       })
+      .catch(err => console.log(err))
   }
 
   const handleSearch = (searchOptions) => {

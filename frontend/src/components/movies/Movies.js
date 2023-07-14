@@ -16,27 +16,33 @@ function Movies({ isloggedIn }) {
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [isEmptyResult, setIsEmptyResult] = useState(false);
 
+  const [preloader, setPreloader] = useState(false);
+
   useEffect(() => {
     getBeatMovies()
     getSavedMovies()
   }, []);
 
   async function getSavedMovies() {
+    setPreloader(true)
     return mainApi.getInitialMovie()
       .then(res => {
         setSavedMovies(res)
         localStorage.setItem('savedMovie', JSON.stringify(res))
       })
       .catch(err => alert(err))
+      .finally(() => setPreloader(false))
   }
 
   async function getBeatMovies() {
+    setPreloader(true)
     return getInitialMovies()
       .then(res => {
         setBeatMovies(res)
         localStorage.setItem('beatMovie', JSON.stringify(res))
       })
       .catch(err => alert(err))
+      .finally(() => setPreloader(false))
   }
 
   const handleSearch = (searchOptions) => {
@@ -93,6 +99,7 @@ function Movies({ isloggedIn }) {
           query={JSON.parse(localStorage.getItem('searchOptions')).query}
           checkBox={JSON.parse(localStorage.getItem('searchOptions')).isShortFilm} />
         {isEmptyResult ? <span className='empty-result'>Ничего не найдено</span> : null}
+        {preloader ? <Preloader /> : null}
         <MoviesCardList
           movies={JSON.parse(localStorage.getItem('searchResult')) || filteredMovies}
           savedMovies={savedMovies}
