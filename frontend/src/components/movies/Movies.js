@@ -4,46 +4,54 @@ import Header from '../Header';
 import SearchForm from './searchForm/SearchForm'
 import MoviesCardList from './moviesCardList/MoviesCardList'
 import Footer from '../Footer'
+import mainApi from '../../utils/MainApi';
 import { getInitialMovies } from '../../utils/MoviesApi';
 import Preloader from '../Preloader/Preloader/Preloader';
 
-function Movies({ isloggedIn }) {
 
-  const [movies, setMovies] = useState([]);
+function Movies({ isloggedIn }) {
+  const [beatMovies, setBeatMovies] = useState([]);
+  const [savedMovies, setSavedMovies] = useState([]);
+
   const [filteredMovies, setFilteredMovies] = useState([]);
-  const [isPreloaderActive, setIsPreloaderActive] = useState(false);
   const [isEmptyResult, setIsEmptyResult] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    handleGetAllMovies();
+    getBeatMovies()
+    getSavedMovies()
   }, []);
 
-  const handleGetAllMovies = () => {
-    setIsPreloaderActive(true);
-    const allMovies = JSON.parse(localStorage.getItem('allMovies'));
-    if (typeof allMovies === 'undefined') {
-      return getInitialMovies()
-        .then((res) => {
-          localStorage.setItem('allMovies', JSON.stringify(res));
-          setMovies(res);
-        })
-        .catch((err) => {
-          setErrorMessage(
-            'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.'
-          );
-        })
-        .finally(() => setIsPreloaderActive(false));
-    } else {
-      setMovies(allMovies);
-      setIsPreloaderActive(false)
-    }
-  };
+  useEffect(() => {
+    console.log(savedMovies, 'savedMovies')
+    console.log(beatMovies, 'beatMovies')
+  }, [savedMovies, beatMovies])
+
+  // useEffect(() => {
+  //   const searchOptions = JSON.parse(localStorage.getItem('searchOptions'))
+  //   handleSearch(searchOptions)
+  // }, [])
+
+  async function getSavedMovies() {
+    return mainApi.getInitialMovie()
+      .then(res => {
+        setSavedMovies(res)
+      })
+      .catch(err => alert(err))
+  }
+
+  async function getBeatMovies() {
+    return getInitialMovies()
+      .then(res => {
+        setBeatMovies(res)
+        localStorage.setItem('beatMovie', JSON.stringify(res))
+      })
+      .catch(err => alert(err))
+  }
 
   const handleSearch = (searchOptions) => {
-    localStorage.setItem('searchOptions', JSON.stringify(searchOptions));
     const { query, isShortFilm } = searchOptions;
-    const filtered = movies.filter((movie) => {
+    const beatTestMovies = JSON.parse(localStorage.getItem('beatMovie'))
+    const filtered = beatTestMovies.filter((movie) => {
       const isIncluded = movie.nameRU.toLowerCase().includes(query.toLowerCase());
       const isShort = movie.duration <= 40;
       if (isShortFilm) {
@@ -52,14 +60,33 @@ function Movies({ isloggedIn }) {
         return isIncluded;
       }
     });
-    if (filtered.length === 0){
+
+    if (filtered.length === 0) {
       setIsEmptyResult(true)
-    } 
-     else {
+    }
+    else {
       setIsEmptyResult(false)
-     }
+    }
     localStorage.setItem('searchResult', JSON.stringify(filtered));
     setFilteredMovies(filtered);
+  }
+
+  async function handleSaveMovie(movie) {
+    return mainApi.addMovie(movie)
+      .then(res => {
+        setSavedMovies(prev => [...prev, res])
+      })
+      .catch(err => alert(err))
+  }
+
+  async function handleDeleteMovie(movie) {
+    const movieGonnaRemove = savedMovies.find((item) => (movie.id + '') === item.movieId)
+    return mainApi.removeMovie(movieGonnaRemove._id)
+      .then(res => {
+        const newArr = savedMovies.filter((item) => item._id !== movieGonnaRemove._id)
+        setSavedMovies(newArr);
+      })
+      .catch(err => alert(err))
   }
 
   return (
@@ -67,12 +94,13 @@ function Movies({ isloggedIn }) {
       <Header isloggedIn={isloggedIn} />
       <main className='main'>
         <SearchForm onSearch={handleSearch} />
-        {isPreloaderActive ? <Preloader /> : null}
-        {errorMessage ? (
-          <span className='error-message'>{errorMessage}</span>
-        ) : null}
         {isEmptyResult ? <span className='empty-result'>Ничего не найдено</span> : null}
-        {filteredMovies.length >= 1 ? <MoviesCardList movies={filteredMovies} isNeedMoreButton={true} /> : null}
+        <MoviesCardList
+          movies={JSON.parse(localStorage.getItem('searchResult')) || filteredMovies}
+          savedMovies={savedMovies}
+          isNeedMoreButton={true}
+          onHandleDeleteMovie={handleDeleteMovie}
+          onHandleSaveMovie={handleSaveMovie} />
       </main>
       <Footer />
     </>

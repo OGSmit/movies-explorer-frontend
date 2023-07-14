@@ -25,12 +25,8 @@ function SavedMovies({ isloggedIn }) {
  async function handleDeleteMovie(id) {
     return mainApi.removeMovie(id)
       .then(res => {
-        const updatedFilteredMovies = savedMovies.filter((movie) => {
-          if (movie._id !== res.data._id) {
-            return movie
-          }
-        })
-        setSavedMovies([...updatedFilteredMovies])
+        const updatedFilteredMovies = savedMovies.filter((movie) => movie._id !== res.data._id)
+        setSavedMovies(updatedFilteredMovies)
       })
   }
 

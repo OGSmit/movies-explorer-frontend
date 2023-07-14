@@ -1,21 +1,14 @@
 import React, { useState } from 'react';
 import './MoviesCardList.css';
 import MoviesCard from '../moviesCard/MoviesCard';
-import mainApi from '../../../utils/MainApi';
 import { useLocation } from 'react-router-dom';
 import { BASE_URL } from '../../../constants/constants';
 
-function MoviesCardList({ movies, isNeedMoreButton, onDelete }) {
-
-
-  const [visibleMovies, setVisibleMovies] = useState(7);
+function MoviesCardList({ movies, isNeedMoreButton, onDelete, onHandleDeleteMovie, onHandleSaveMovie, savedMovies }) {
   const location = useLocation();
+  const [visibleMovies, setVisibleMovies] = useState(7);
 
   const isSavedMovie = location.pathname === '/saved-movies';
-
-  async function handleSaveMovie(movie) {
-    return mainApi.addMovie(movie)
-  }
 
   const handleLoadMore = () => {
     setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + 7);
@@ -31,12 +24,15 @@ function MoviesCardList({ movies, isNeedMoreButton, onDelete }) {
           renderedMovies.map((movie) => (
 
             <MoviesCard key={movie.id}
+              movie={movie}
               isSavedMovie={isSavedMovie}
+              savedMovies={savedMovies}
               name={movie.nameRU}
               duration={movie.duration}
               link={movie.trailerLink}
               posterLink={`${BASE_URL}${movie.image.url}`}
-              onClickLikeButton={() => { handleSaveMovie(movie) }} />
+              onSave={() => onHandleSaveMovie(movie)}
+              onDelete={() => onHandleDeleteMovie(movie)} />
           )):
 
           movies.map((movie) => (
@@ -47,7 +43,7 @@ function MoviesCardList({ movies, isNeedMoreButton, onDelete }) {
               duration={movie.duration}
               link={movie.trailerLink}
               posterLink={movie.image}
-              onClickLikeButton={() => { onDelete(movie._id) }} />
+              onClickDeleteButton={() => { onDelete(movie._id) }} />
           ))}
       </ul>
       {isNeedMoreButton && movies.length > visibleMovies && (

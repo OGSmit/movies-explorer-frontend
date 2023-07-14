@@ -16,8 +16,7 @@ function App() {
   const navigate = useNavigate();
 
   const [isloggedIn, setIsloggedIn] = useState(false);
-  // const [isLoading, setIsLoading] = useState(false);
-  const [currentUser, setCurrentUser] = useState({})
+  const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
     function handleTokenCheck() {
@@ -31,7 +30,7 @@ function App() {
           });
         })
           .then(() => {
-            navigate("/", { replace: true })
+            navigate("/movies", { replace: true })
           })
           .catch(err => console.log(err))
       }
@@ -74,7 +73,7 @@ function App() {
   }
 
   async function goExit() {
-    localStorage.removeItem('jwt');
+    localStorage.clear();
     setIsloggedIn(false)
     navigate('/', { replace: true });
   }
