@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './MoviesCardList.css';
 import MoviesCard from '../moviesCard/MoviesCard';
 import { useLocation } from 'react-router-dom';
@@ -7,8 +7,53 @@ import { BASE_URL } from '../../../constants/constants';
 function MoviesCardList({ movies, isNeedMoreButton, onDelete, onHandleDeleteMovie, onHandleSaveMovie, savedMovies }) {
   const location = useLocation();
   const [visibleMovies, setVisibleMovies] = useState(7);
-
   const isSavedMovie = location.pathname === '/saved-movies';
+
+  useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+      let visibleCount;
+      if (screenWidth < 768) {
+        visibleCount = 5;
+      } else {
+        visibleCount = 7;
+      }
+      setVisibleMovies(visibleCount);
+    };
+  
+    handleResize();
+    window.addEventListener('resize', handleResize);
+  
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    let resizeTimeout;
+  
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        const screenWidth = window.innerWidth;
+        let visibleCount;
+        if (screenWidth < 768) {
+          visibleCount = 5;
+        } else {
+          visibleCount = 7;
+        }
+        setVisibleMovies(visibleCount);
+      }, 500);
+    };
+  
+    handleResize();
+    window.addEventListener('resize', handleResize);
+  
+    return () => {
+      clearTimeout(resizeTimeout);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const handleLoadMore = () => {
     setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + 7);
@@ -33,7 +78,7 @@ function MoviesCardList({ movies, isNeedMoreButton, onDelete, onHandleDeleteMovi
               posterLink={`${BASE_URL}${movie.image.url}`}
               onSave={() => onHandleSaveMovie(movie)}
               onDelete={() => onHandleDeleteMovie(movie)} />
-          )):
+          )) :
 
           movies.map((movie) => (
 
