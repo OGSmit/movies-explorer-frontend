@@ -3,7 +3,7 @@ import logo from '../../images/header__logo.svg';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-function Registration({ onRegistration, onLogin }) {
+function Registration({ onRegistration, onLogin, setInfoTool, closeInfoTool }) {
   const [formValue, setFormValue] = useState({});
   const [formErrorMessage, setFormErrorMessage] = useState({});
   const [fetchErrorMessage, setFetchErrorMessage] = useState('');
@@ -60,15 +60,17 @@ function Registration({ onRegistration, onLogin }) {
     onRegistration(name, email, password, e)
       .then(() => {
         onLogin(email, password, e)
+        setInfoTool({text: 'Успешно', statusOk:true, opened: true })
       })
       .catch(err => {
         setFetchErrorMessage(err)
+        setInfoTool({text: err, statusOk:false, opened: true })
       })
   }
 
   return (
     <main>
-      <section className='registration'>
+      <section className='registration' onClick={closeInfoTool}>
         <div className='registration__container-top'>
           <Link to='/' className='registration__logo-link'><img className='registration__logo' alt='логотип' src={logo}></img></Link>
           <h1 className='registration__title'>Добро пожаловать!</h1>
@@ -83,7 +85,7 @@ function Registration({ onRegistration, onLogin }) {
               minLength={2}
               maxLength={18}
               type="text"
-              placeholder='Виталий' //placeholder для макета, потом уберу
+              placeholder='Имя'
               onChange={handleChangeName}></input>
             <span className={formErrorMessage.name === 'undefined' ? 'registration__error-invisible' : 'registration__error'}>{formErrorMessage.name || ''}</span>
             <label className='registration__label' htmlFor='registration__input_email'>E-mail</label>
@@ -92,7 +94,7 @@ function Registration({ onRegistration, onLogin }) {
               name='email'
               required
               type="email"
-              placeholder='pochta@yandex.ru' //placeholder для макета, потом уберу
+              placeholder='Почта'
               onChange={handleChangeEmail}></input>
             <span className={formErrorMessage.email === 'undefined' ? 'registration__error-invisible' : 'registration__error'}>{formErrorMessage.email || ''}</span>
             <label className='registration__label' htmlFor='registration__input_password'>Пароль</label>
@@ -103,7 +105,7 @@ function Registration({ onRegistration, onLogin }) {
               minLength={8}
               maxLength={24}
               type="password"
-              placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;' //placeholder для макета, потом уберу
+              placeholder='Пароль'
               onChange={handleChangePassword}></input>
             <span className={formErrorMessage.password === 'undefined' ? 'registration__error-invisible' : 'registration__error'}>{formErrorMessage.password}</span>
             <p className={fetchErrorMessage.length > 0 ? 'registration__fetch-error' : 'registration__fetch-error registration__fetch-error_invisible'}>

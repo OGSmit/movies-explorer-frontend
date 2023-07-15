@@ -9,7 +9,7 @@ import { getInitialMovies } from '../../utils/MoviesApi';
 import Preloader from '../Preloader/Preloader/Preloader';
 
 
-function Movies({ isloggedIn }) {
+function Movies({ isloggedIn, setInfoTool, closeInfoTool }) {
   const [beatMovies, setBeatMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
 
@@ -30,7 +30,7 @@ function Movies({ isloggedIn }) {
         setSavedMovies(res)
         localStorage.setItem('savedMovie', JSON.stringify(res))
       })
-      .catch(err => alert(err))
+      .catch(err => setInfoTool({text: err, statusOk:false, opened: true }))
       .finally(() => setPreloader(false))
   }
 
@@ -41,7 +41,7 @@ function Movies({ isloggedIn }) {
         setBeatMovies(res)
         localStorage.setItem('beatMovie', JSON.stringify(res))
       })
-      .catch(err => alert(err))
+      .catch(err => setInfoTool({text: err, statusOk:false, opened: true }))
       .finally(() => setPreloader(false))
   }
 
@@ -73,7 +73,7 @@ function Movies({ isloggedIn }) {
       .then(res => {
         setSavedMovies(prev => [...prev, res])
       })
-      .catch(err => alert(err))
+      .catch(err => setInfoTool({text: err, statusOk:false, opened: true }))
   }
 
   async function handleDeleteMovie(movie) {
@@ -83,21 +83,25 @@ function Movies({ isloggedIn }) {
         const newArr = savedMovies.filter((item) => item._id !== movieGonnaRemove._id)
         setSavedMovies(newArr);
       })
-      .catch(err => alert(err))
+      .catch(err => setInfoTool({text: err, statusOk:false, opened: true }))
   }
 
   useEffect(() => {
     localStorage.setItem('savedMovie', JSON.stringify(savedMovies))
   }, [savedMovies])
 
+  const searchOptions = JSON.parse(localStorage.getItem('searchOptions')) || {};
+  const query = searchOptions.query || '';
+  const isShortFilm = searchOptions.isShortFilm || false;
+
   return (
     <>
       <Header isloggedIn={isloggedIn} />
-      <main className='main'>
+      <main className='main' onClick={closeInfoTool}>
         <SearchForm
           onSearch={handleSearch}
-          query={JSON.parse(localStorage.getItem('searchOptions')).query}
-          checkBox={JSON.parse(localStorage.getItem('searchOptions')).isShortFilm} />
+          query={query}
+          checkBox={isShortFilm} />
         {isEmptyResult ? <span className='empty-result'>Ничего не найдено</span> : null}
         {preloader ? <Preloader /> : null}
         <MoviesCardList

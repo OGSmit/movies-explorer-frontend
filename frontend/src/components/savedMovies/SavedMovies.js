@@ -6,7 +6,7 @@ import MoviesCardList from '../movies/moviesCardList/MoviesCardList'
 import Footer from '../Footer'
 import mainApi from '../../utils/MainApi';
 
-function SavedMovies({ isloggedIn }) {
+function SavedMovies({ isloggedIn, setInfoTool, closeInfoTool }) {
 
   const [savedMovies, setSavedMovies] = useState(JSON.parse(localStorage.getItem('savedMovie')))
   const [isEmptyResult, setIsEmptyResult] = useState(false);
@@ -17,7 +17,7 @@ function SavedMovies({ isloggedIn }) {
         const updatedFilteredMovies = savedMovies.filter((movie) => movie._id !== res.data._id)
         setSavedMovies(updatedFilteredMovies)
       })
-      .catch(err => console.log(err))
+      .catch(err => setInfoTool({ text: err, statusOk: false, opened: true }))
   }
 
   const handleSearch = (searchOptions) => {
@@ -44,7 +44,7 @@ function SavedMovies({ isloggedIn }) {
   return (
     <>
       <Header isloggedIn={isloggedIn} />
-      <main className='savedMovies'>
+      <main className='savedMovies' onClick={closeInfoTool}>
         <SearchForm onSearch={handleSearch} />
         {isEmptyResult ? <span className='empty-result'>Ничего не найдено</span> : null}
         <MoviesCardList inSaveMovies={true} isNeedMoreButton={false} movies={savedMovies} onDelete={handleDeleteMovie} />

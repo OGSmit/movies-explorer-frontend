@@ -1,9 +1,9 @@
 import './Profile.css'
 import Header from '../Header';
-import { useState, useContext} from 'react';
+import { useState, useContext } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-function Profile({ goExit, isloggedIn, onUserEdit }) {
+function Profile({ goExit, isloggedIn, onUserEdit, setInfoTool, closeInfoTool }) {
   const userInfo = useContext(CurrentUserContext);
 
   const [formValue, setFormValue] = useState({});
@@ -25,7 +25,7 @@ function Profile({ goExit, isloggedIn, onUserEdit }) {
       ...formErrorMessage,
       [name]: e.target.validationMessage
     });
-     setIsFormValid(e.target.validity.valid);
+    setIsFormValid(e.target.validity.valid);
   }
 
   function handleChangeEmail(e) {
@@ -58,7 +58,9 @@ function Profile({ goExit, isloggedIn, onUserEdit }) {
   const handleUserEdit = () => {
     const { name = userInfo.data.name, email = userInfo.data.email } = formValue;
     onUserEdit(name, email)
+      .then(() => setInfoTool({ text: 'Успешно', statusOk: true, opened: true }))
       .catch((err) => {
+        setInfoTool({text: err, statusOk:false, opened: true })
         (err === 'Ошибка: 409') ?
           setEditError('Пользователь с таким email уже существует.') : setEditError('При регистрации пользователя произошла ошибка.')
       })
@@ -67,7 +69,7 @@ function Profile({ goExit, isloggedIn, onUserEdit }) {
   return (
     <>
       <Header isloggedIn={isloggedIn} />
-      <main className='profile'>
+      <main className='profile' onClick={closeInfoTool}>
         <section className='profile__container'>
           <h1 className='profile__title'>{`Привет, ${userInfo.data.name}!`}</h1>
           <form className='profile__form'>

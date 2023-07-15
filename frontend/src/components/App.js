@@ -11,12 +11,14 @@ import Profile from '../components/profile/Profile';
 import NotFound from './notFound/NotFound';
 import ProtectedRouteElement from './ProtectedRoute';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import InfoTool from './infoToolTip/InfoTool';
 
 function App() {
   const navigate = useNavigate();
 
   const [isloggedIn, setIsloggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [infoTool, setInfoTool] = useState({text: '', statusOk: true, opened: false})
 
   useEffect(() => {
     function handleTokenCheck() {
@@ -45,7 +47,6 @@ function App() {
       .then((res) => {
         e.target.reset()
       })
-    // .catch(err => alert(err))
   }
 
   async function handleLogin(email, password, e) {
@@ -58,7 +59,6 @@ function App() {
         }
         e.target.reset()
       })
-    // .catch(err => alert(err))
   }
 
   async function handleUserEdit(name, email) {
@@ -78,6 +78,24 @@ function App() {
     navigate('/', { replace: true });
   }
 
+  function closeInfoTool() {
+    setInfoTool({ ...infoTool, opened: false });
+  }
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        closeInfoTool();
+      }
+    };
+  
+    document.addEventListener('keydown', handleKeyDown);
+  
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   return (
     <div className="App">
       <CurrentUserContext.Provider value={currentUser} >
@@ -85,21 +103,22 @@ function App() {
 
           <Route path='/' element={<Main isloggedIn={isloggedIn} />} />
 
-          <Route path='/signup' element={isloggedIn ? <Navigate to='/' /> : <Registration onLogin={handleLogin} onRegistration={handleRegistration} />} />
+          <Route path='/signup' element={isloggedIn ? <Navigate to='/' /> : <Registration onLogin={handleLogin} onRegistration={handleRegistration} setInfoTool={setInfoTool} closeInfoTool={closeInfoTool} />} />
 
-          <Route path='/signin' element={isloggedIn ? <Navigate to='/' /> : <Login onLogin={handleLogin} />} />
+          <Route path='/signin' element={isloggedIn ? <Navigate to='/' /> : <Login onLogin={handleLogin} setInfoTool={setInfoTool} closeInfoTool={closeInfoTool}/>} />
 
-          <Route path='/saved-movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={SavedMovies} isloggedIn={isloggedIn} />} />
+          <Route path='/saved-movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={SavedMovies} isloggedIn={isloggedIn} setInfoTool={setInfoTool} closeInfoTool={closeInfoTool} />} />
 
-          <Route path='/movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={Movies} isloggedIn={isloggedIn} />} />
+          <Route path='/movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={Movies} isloggedIn={isloggedIn} setInfoTool={setInfoTool} closeInfoTool={closeInfoTool} />} />
 
-          <Route path='/profile' element={<ProtectedRouteElement goExit={goExit} loggedIn={isloggedIn} element={Profile} onUserEdit={handleUserEdit} isloggedIn={isloggedIn} />} />
+          <Route path='/profile' element={<ProtectedRouteElement goExit={goExit} loggedIn={isloggedIn} element={Profile} onUserEdit={handleUserEdit} isloggedIn={isloggedIn} setInfoTool={setInfoTool} closeInfoTool={closeInfoTool} />} />
 
           <Route path='*' element={<NotFound />} />
 
         </Routes>
       </CurrentUserContext.Provider>
 
+      <InfoTool text={infoTool.text} statusOk={infoTool.statusOk} opened={infoTool.opened} onClose={closeInfoTool}/>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../images/header__logo.svg';
 import { useState } from 'react';
 
-function Login({ onLogin }) {
+function Login({ onLogin, setInfoTool, closeInfoTool }) {
   const [formValue, setFormValue] = useState({});
   const [formErrorMessage, setFormErrorMessage] = useState({});
   const [fetchErrorMessage, setFetchErrorMessage] = useState('');
@@ -42,12 +42,16 @@ function Login({ onLogin }) {
     e.preventDefault();
     const { email, password } = formValue;
     onLogin(email, password, e)
-    .catch(err => setFetchErrorMessage(err));
+    .then(() => setInfoTool({text: 'Успешно', statusOk:true, opened: true }))
+    .catch(err => {
+      setFetchErrorMessage(err)
+      setInfoTool({text: err, statusOk:false, opened: true })
+    });
   }
 
   return (
     <main>
-      <section className='login'>
+      <section className='login' onClick={closeInfoTool}>
         <div className='login__container-top'>
           <Link to='/' className='login__logo-link'><img className='login__logo' alt='логотип' src={logo}></img></Link>
           <h1 className='login__title'>Рады видеть!</h1>
@@ -60,7 +64,7 @@ function Login({ onLogin }) {
               name='email'
               required
               type="email"
-              placeholder='pochta@yandex.ru' // placeholder для макета уберу
+              placeholder='Почта'
               onChange={handleChangeEmail}></input>
             <span className={formErrorMessage.email === 'undefined' ? 'login__error-invisible' : 'login__error'}>{formErrorMessage.email || ''}</span>
             <label className='login__label' htmlFor='login__input_password'>Пароль</label>
