@@ -30,7 +30,7 @@ function Movies({ isloggedIn, setInfoTool, closeInfoTool }) {
         setSavedMovies(res)
         localStorage.setItem('savedMovie', JSON.stringify(res))
       })
-      .catch(err => setInfoTool({text: err, statusOk:false, opened: true }))
+      .catch(err => setInfoTool({ text: err, statusOk: false, opened: true }))
       .finally(() => setPreloader(false))
   }
 
@@ -41,7 +41,7 @@ function Movies({ isloggedIn, setInfoTool, closeInfoTool }) {
         setBeatMovies(res)
         localStorage.setItem('beatMovie', JSON.stringify(res))
       })
-      .catch(err => setInfoTool({text: err, statusOk:false, opened: true }))
+      .catch(err => setInfoTool({ text: err, statusOk: false, opened: true }))
       .finally(() => setPreloader(false))
   }
 
@@ -73,7 +73,7 @@ function Movies({ isloggedIn, setInfoTool, closeInfoTool }) {
       .then(res => {
         setSavedMovies(prev => [...prev, res])
       })
-      .catch(err => setInfoTool({text: err, statusOk:false, opened: true }))
+      .catch(err => setInfoTool({ text: err, statusOk: false, opened: true }))
   }
 
   async function handleDeleteMovie(movie) {
@@ -83,7 +83,7 @@ function Movies({ isloggedIn, setInfoTool, closeInfoTool }) {
         const newArr = savedMovies.filter((item) => item._id !== movieGonnaRemove._id)
         setSavedMovies(newArr);
       })
-      .catch(err => setInfoTool({text: err, statusOk:false, opened: true }))
+      .catch(err => setInfoTool({ text: err, statusOk: false, opened: true }))
   }
 
   useEffect(() => {
@@ -102,8 +102,8 @@ function Movies({ isloggedIn, setInfoTool, closeInfoTool }) {
           onSearch={handleSearch}
           query={query}
           checkBox={isShortFilm} />
-        {isEmptyResult ? <span className='empty-result'>Ничего не найдено</span> : null}
-        {preloader ? <Preloader /> : null}
+        {isEmptyResult && <span className='empty-result'>Ничего не найдено</span>}
+        {preloader && <Preloader />}
         <MoviesCardList
           movies={JSON.parse(localStorage.getItem('searchResult')) || filteredMovies}
           savedMovies={savedMovies}
