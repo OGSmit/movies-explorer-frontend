@@ -27,7 +27,7 @@ function SearchForm({ onSearch, query, checkBox }) {
       <form className='search-form__container' onSubmit={handleSubmit}>
         <div className='search-form__input-container'>
           <input
-            minLength={2}
+            minLength={1}
             maxLength={24}
             required
             placeholder='Фильм'
