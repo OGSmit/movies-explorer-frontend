@@ -5,6 +5,7 @@ import SearchForm from '../../components/movies/searchForm/SearchForm'
 import MoviesCardList from '../movies/moviesCardList/MoviesCardList'
 import Footer from '../Footer'
 import mainApi from '../../utils/MainApi';
+import { SHORT_FILM_DURATION } from '../../constants/constants';
 
 function SavedMovies({ isloggedIn, setInfoTool, closeInfoTool }) {
 
@@ -24,7 +25,7 @@ function SavedMovies({ isloggedIn, setInfoTool, closeInfoTool }) {
     const { query, isShortFilm } = searchOptions;
     const filtered = savedMovies.filter((movie) => {
       const isIncluded = movie.nameRU.toLowerCase().includes(query.toLowerCase());
-      const isShort = movie.duration <= 40;
+      const isShort = movie.duration <= SHORT_FILM_DURATION;
       if (isShortFilm) {
         return isIncluded && isShort;
       } else {

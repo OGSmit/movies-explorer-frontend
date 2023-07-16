@@ -3,20 +3,23 @@ import './MoviesCardList.css';
 import MoviesCard from '../moviesCard/MoviesCard';
 import { useLocation } from 'react-router-dom';
 import { BASE_URL } from '../../../constants/constants';
+import { NUMBER_OF_MOVIE_DESKTOP } from '../../../constants/constants';
+import { NUMBER_OF_MOVIE_MOBILE } from '../../../constants/constants';
+import { MOBILE_SIZE } from '../../../constants/constants';
 
 function MoviesCardList({ movies, isNeedMoreButton, onDelete, onHandleDeleteMovie, onHandleSaveMovie, savedMovies }) {
   const location = useLocation();
-  const [visibleMovies, setVisibleMovies] = useState(7);
+  const [visibleMovies, setVisibleMovies] = useState(NUMBER_OF_MOVIE_DESKTOP);
   const isSavedMovie = location.pathname === '/saved-movies';
 
   useEffect(() => {
     const handleResize = () => {
       const screenWidth = window.innerWidth;
       let visibleCount;
-      if (screenWidth < 768) {
-        visibleCount = 5;
+      if (screenWidth < MOBILE_SIZE) {
+        visibleCount = NUMBER_OF_MOVIE_MOBILE;
       } else {
-        visibleCount = 7;
+        visibleCount = NUMBER_OF_MOVIE_DESKTOP;
       }
       setVisibleMovies(visibleCount);
     };
@@ -37,10 +40,10 @@ function MoviesCardList({ movies, isNeedMoreButton, onDelete, onHandleDeleteMovi
       resizeTimeout = setTimeout(() => {
         const screenWidth = window.innerWidth;
         let visibleCount;
-        if (screenWidth < 768) {
-          visibleCount = 5;
+        if (screenWidth < MOBILE_SIZE) {
+          visibleCount = NUMBER_OF_MOVIE_MOBILE;
         } else {
-          visibleCount = 7;
+          visibleCount = NUMBER_OF_MOVIE_DESKTOP;
         }
         setVisibleMovies(visibleCount);
       }, 500);
@@ -56,7 +59,7 @@ function MoviesCardList({ movies, isNeedMoreButton, onDelete, onHandleDeleteMovi
   }, []);
 
   const handleLoadMore = () => {
-    setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + 7);
+    setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + NUMBER_OF_MOVIE_DESKTOP);
   };
 
   const renderedMovies = movies.slice(0, visibleMovies);

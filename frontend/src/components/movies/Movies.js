@@ -7,7 +7,7 @@ import Footer from '../Footer'
 import mainApi from '../../utils/MainApi';
 import { getInitialMovies } from '../../utils/MoviesApi';
 import Preloader from '../Preloader/Preloader/Preloader';
-
+import { SHORT_FILM_DURATION } from '../../constants/constants';
 
 function Movies({ isloggedIn, setInfoTool, closeInfoTool }) {
   const [beatMovies, setBeatMovies] = useState([]);
@@ -50,7 +50,7 @@ function Movies({ isloggedIn, setInfoTool, closeInfoTool }) {
     const { query, isShortFilm } = searchOptions;
     const filtered = beatMovies.filter((movie) => {
       const isIncluded = movie.nameRU.toLowerCase().includes(query.toLowerCase());
-      const isShort = movie.duration <= 40;
+      const isShort = movie.duration <= SHORT_FILM_DURATION;
       if (isShortFilm) {
         return isIncluded && isShort;
       } else {
