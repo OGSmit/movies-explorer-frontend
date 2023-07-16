@@ -101,6 +101,7 @@
 
 .profile__button-save:disabled:hover {
   cursor: not-allowed;
+  opacity: 0.2;
 }
 
 .profile__button-save:hover {
