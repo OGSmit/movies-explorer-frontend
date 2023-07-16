@@ -9,7 +9,7 @@ function InfoTool({ statusOk, text, opened, onClose }) {
   };
 
   return (
-    <div className={opened ? 'info-tool info-tool_opened' : 'info-tool'} onclick={handleOverlayClick}>
+    <div className={opened ? 'info-tool info-tool_opened' : 'info-tool'} onClick={handleOverlayClick}>
       <div className="info-tool__tooltip">
         <img className='info-tool__icon' alt='иконка' src={statusOk ? success : oops}></img>
         <p className="info-tool__tooltip-text">{text}</p>
