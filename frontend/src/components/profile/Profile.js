@@ -8,8 +8,8 @@ function Profile({ goExit, isloggedIn, onUserEdit, setInfoTool, closeInfoTool })
 
   const [formValue, setFormValue] = useState({});
   const [formErrorMessage, setFormErrorMessage] = useState({});
-  const [gonnaEdit, setGonnaEdit] = useState(false)
-
+  const [gonnaEdit, setGonnaEdit] = useState(false);
+  const [isDisabledInput, setIsDisabledInput] = useState(true);
   const [editError, setEditError] = useState('')
 
   const [isFormValid, setIsFormValid] = useState(false);
@@ -48,14 +48,12 @@ function Profile({ goExit, isloggedIn, onUserEdit, setInfoTool, closeInfoTool })
   }
 
   const handelGonnaEdit = () => {
-    const inputs = document.querySelectorAll('.profile__input');
-    inputs.forEach(input => {
-      input.disabled = false;
-    });
+    setIsDisabledInput(false);
     setGonnaEdit(true);
   }
 
   const handleUserEdit = () => {
+    setIsDisabledInput(true);
     const { name = userInfo.data.name, email = userInfo.data.email } = formValue;
     onUserEdit(name, email)
       .then(() => setInfoTool({ text: 'Успешно', statusOk: true, opened: true }))
@@ -64,6 +62,7 @@ function Profile({ goExit, isloggedIn, onUserEdit, setInfoTool, closeInfoTool })
         (err === 'Ошибка: 409') ?
           setEditError('Пользователь с таким email уже существует.') : setEditError('При регистрации пользователя произошла ошибка.')
       })
+      .finally(() => setIsDisabledInput(false));
   }
 
   return (
@@ -76,7 +75,7 @@ function Profile({ goExit, isloggedIn, onUserEdit, setInfoTool, closeInfoTool })
             <div className='profile__container-input'>
               <label className='profile__input-label' htmlFor='profile__input_name'>Имя</label>
               <input name='name'
-                disabled={true}
+                disabled={isDisabledInput}
                 onChange={handleChangeName}
                 type='text'
                 required
@@ -90,7 +89,7 @@ function Profile({ goExit, isloggedIn, onUserEdit, setInfoTool, closeInfoTool })
             <div className='profile__container-input'>
               <label className='profile__input-label' htmlFor='profile__input_email'>E-mail</label>
               <input name='email'
-                disabled={true}
+                disabled={isDisabledInput}
                 type='email'
                 required
                 onChange={handleChangeEmail}
@@ -102,7 +101,7 @@ function Profile({ goExit, isloggedIn, onUserEdit, setInfoTool, closeInfoTool })
             {gonnaEdit ?
               <>
                 <span className={editError.length > 1 ? 'profile__submit-error' : 'profile__submit-error profile__submit-error_invisible'}>{editError}</span>
-                <button onClick={handleUserEdit} disabled={!isFormValid} type='button' className='profile__button-save'>Сохранить</button>
+                <button onClick={handleUserEdit} disabled={isDisabledInput && !isFormValid} type='button' className='profile__button-save'>Сохранить</button>
               </> :
               <button onClick={handelGonnaEdit} type='button' className='profile__button-edit'>Редактировать</button>
             }
