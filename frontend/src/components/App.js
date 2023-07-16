@@ -18,7 +18,7 @@ function App() {
 
   const [isloggedIn, setIsloggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
-  const [infoTool, setInfoTool] = useState({text: '', statusOk: true, opened: false})
+  const [infoTool, setInfoTool] = useState({ text: '', statusOk: true, opened: false })
 
   useEffect(() => {
     function handleTokenCheck() {
@@ -34,93 +34,96 @@ function App() {
           .then(() => {
             navigate("/movies", { replace: true })
           })
-          .catch(err => console.log(err))
-      }
+          .catch(err => {
+
+            setInfoTool({ text: err, statusOk: true, opened: false })
+      })
     }
+  }
 
     handleTokenCheck()
     return () => { }
-  }, []);
+}, []);
 
-  async function handleRegistration(name, email, password, e) {
-    return register(name, email, password)
-      .then((res) => {
-        e.target.reset()
-      })
-  }
+async function handleRegistration(name, email, password, e) {
+  return register(name, email, password)
+    .then((res) => {
+      e.target.reset()
+    })
+}
 
-  async function handleLogin(email, password, e) {
-    return login(email, password)
-      .then((res) => {
-        if (res.token) {
-          localStorage.setItem('jwt', res.token);
-          setIsloggedIn(true);
-          navigate("/movies", { replace: true })
-        }
-        e.target.reset()
-      })
-  }
-
-  async function handleUserEdit(name, email) {
-    return userEdit(name, email)
-      .then(res => {
-        setCurrentUser({
-          ...currentUser,
-          ...res
-        })
+async function handleLogin(email, password, e) {
+  return login(email, password)
+    .then((res) => {
+      if (res.token) {
+        localStorage.setItem('jwt', res.token);
+        setIsloggedIn(true);
         navigate("/movies", { replace: true })
-      })
-  }
-
-  async function goExit() {
-    localStorage.clear();
-    setIsloggedIn(false)
-    navigate('/', { replace: true });
-  }
-
-  function closeInfoTool() {
-    setInfoTool({ ...infoTool, opened: false });
-  }
-
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === 'Escape') {
-        closeInfoTool();
       }
-    };
-  
-    document.addEventListener('keydown', handleKeyDown);
-  
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
+      e.target.reset()
+    })
+}
 
-  return (
-    <div className="App">
-      <CurrentUserContext.Provider value={currentUser} >
-        <Routes>
+async function handleUserEdit(name, email) {
+  return userEdit(name, email)
+    .then(res => {
+      setCurrentUser({
+        ...currentUser,
+        ...res
+      })
+      navigate("/movies", { replace: true })
+    })
+}
 
-          <Route path='/' element={<Main isloggedIn={isloggedIn} />} />
+async function goExit() {
+  localStorage.clear();
+  setIsloggedIn(false)
+  navigate('/', { replace: true });
+}
 
-          <Route path='/signup' element={isloggedIn ? <Navigate to='/' /> : <Registration onLogin={handleLogin} onRegistration={handleRegistration} setInfoTool={setInfoTool} closeInfoTool={closeInfoTool} />} />
+function closeInfoTool() {
+  setInfoTool({ ...infoTool, opened: false });
+}
 
-          <Route path='/signin' element={isloggedIn ? <Navigate to='/' /> : <Login onLogin={handleLogin} setInfoTool={setInfoTool} closeInfoTool={closeInfoTool}/>} />
+useEffect(() => {
+  const handleKeyDown = (event) => {
+    if (event.key === 'Escape') {
+      closeInfoTool();
+    }
+  };
 
-          <Route path='/saved-movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={SavedMovies} isloggedIn={isloggedIn} setInfoTool={setInfoTool} closeInfoTool={closeInfoTool} />} />
+  document.addEventListener('keydown', handleKeyDown);
 
-          <Route path='/movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={Movies} isloggedIn={isloggedIn} setInfoTool={setInfoTool} closeInfoTool={closeInfoTool} />} />
+  return () => {
+    document.removeEventListener('keydown', handleKeyDown);
+  };
+}, []);
 
-          <Route path='/profile' element={<ProtectedRouteElement goExit={goExit} loggedIn={isloggedIn} element={Profile} onUserEdit={handleUserEdit} isloggedIn={isloggedIn} setInfoTool={setInfoTool} closeInfoTool={closeInfoTool} />} />
+return (
+  <div className="App">
+    <CurrentUserContext.Provider value={currentUser} >
+      <Routes>
 
-          <Route path='*' element={<NotFound />} />
+        <Route path='/' element={<Main isloggedIn={isloggedIn} />} />
 
-        </Routes>
-      </CurrentUserContext.Provider>
+        <Route path='/signup' element={isloggedIn ? <Navigate to='/' /> : <Registration onLogin={handleLogin} onRegistration={handleRegistration} setInfoTool={setInfoTool} closeInfoTool={closeInfoTool} />} />
 
-      <InfoTool text={infoTool.text} statusOk={infoTool.statusOk} opened={infoTool.opened} onClose={closeInfoTool}/>
-    </div>
-  );
+        <Route path='/signin' element={isloggedIn ? <Navigate to='/' /> : <Login onLogin={handleLogin} setInfoTool={setInfoTool} closeInfoTool={closeInfoTool} />} />
+
+        <Route path='/saved-movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={SavedMovies} isloggedIn={isloggedIn} setInfoTool={setInfoTool} closeInfoTool={closeInfoTool} />} />
+
+        <Route path='/movies' element={<ProtectedRouteElement loggedIn={isloggedIn} element={Movies} isloggedIn={isloggedIn} setInfoTool={setInfoTool} closeInfoTool={closeInfoTool} />} />
+
+        <Route path='/profile' element={<ProtectedRouteElement goExit={goExit} loggedIn={isloggedIn} element={Profile} onUserEdit={handleUserEdit} isloggedIn={isloggedIn} setInfoTool={setInfoTool} closeInfoTool={closeInfoTool} />} />
+
+        <Route path='*' element={<NotFound />} />
+
+      </Routes>
+    </CurrentUserContext.Provider>
+
+    <InfoTool text={infoTool.text} statusOk={infoTool.statusOk} opened={infoTool.opened} onClose={closeInfoTool} />
+  </div>
+);
 }
 
 export default App;

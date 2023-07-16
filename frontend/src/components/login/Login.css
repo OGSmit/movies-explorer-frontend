@@ -85,6 +85,7 @@
 
 .login__button-submit[disabled]:hover {
   cursor: not-allowed;
+  opacity: .3;
 }
 
 .login__button-submit:hover {
