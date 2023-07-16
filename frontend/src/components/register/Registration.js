@@ -2,12 +2,14 @@ import './Registration.css'
 import logo from '../../images/header__logo.svg';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { REGEX_EMAIL } from '../../constants/constants';
 
 function Registration({ onRegistration, onLogin, setInfoTool, closeInfoTool }) {
   const [formValue, setFormValue] = useState({});
   const [formErrorMessage, setFormErrorMessage] = useState({});
   const [fetchErrorMessage, setFetchErrorMessage] = useState('');
   const [isDisabledInput, setIsDisabledInput] = useState(false);
+  
   const isFormFieldsValid = !formErrorMessage.name &&
     !formErrorMessage.email &&
     !formErrorMessage.password &&
@@ -35,10 +37,13 @@ function Registration({ onRegistration, onLogin, setInfoTool, closeInfoTool }) {
       [name]: value
     });
 
-    setFormErrorMessage({
-      ...formErrorMessage,
-      [name]: e.target.validationMessage
-    })
+    if (value.length > 0) {
+      const isValid = REGEX_EMAIL.test(value);
+      setFormErrorMessage({
+        ...formErrorMessage,
+        [name]: isValid ? '' : 'Некорректный формат email'
+      });
+    }
   }
 
   function handleChangePassword(e) {
@@ -78,7 +83,7 @@ function Registration({ onRegistration, onLogin, setInfoTool, closeInfoTool }) {
           <h1 className='registration__title'>Добро пожаловать!</h1>
         </div>
         <div className='registration__container-main'>
-          <form className='registration__form' onSubmit={handleSubmit}>
+          <form className='registration__form' noValidate onSubmit={handleSubmit}>
             <label className='registration__label' htmlFor='registration__input_name'>Имя</label>
             <input className='registration__input registration__input_name'
               id='registration__input_name'
@@ -116,7 +121,7 @@ function Registration({ onRegistration, onLogin, setInfoTool, closeInfoTool }) {
             <p className={fetchErrorMessage.length > 0 ? 'registration__fetch-error' : 'registration__fetch-error registration__fetch-error_invisible'}>
               {fetchErrorMessage === 'Ошибка: 409' ? 'Пользователь с таким email уже существует.' : 'При регистрации пользователя произошла ошибка.'}
             </p>
-            <button type='submit' disabled={isDisabledInput && !isFormFieldsValid} className='registration__button-submit' >Зарегистрироваться</button>
+            <button type='submit' disabled={isDisabledInput || !isFormFieldsValid} className='registration__button-submit' >Зарегистрироваться</button>
           </form>
           <div className='registration__container-bottom'>
             <p className='registration__link-description'>Уже зарегистрированы?</p>

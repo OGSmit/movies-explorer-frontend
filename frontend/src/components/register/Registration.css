@@ -84,6 +84,7 @@
 
 .registration__button-submit[disabled]:hover {
   cursor: not-allowed;
+  opacity: .3
 }
 
 .registration__button-submit:hover {
