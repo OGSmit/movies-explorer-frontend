@@ -1,33 +1,37 @@
 import React, { useState } from 'react';
 import './SearchForm.css';
 
-function SearchForm({ onSearch, query, checkBox }) {
+function SearchForm({ onSearch, query, checkBox, setInfoTool }) {
   const [searchQuery, setSearchQuery] = useState(query);
   const [isChecked, setIsChecked] = useState(checkBox);
-  
+
   const handleInputChange = (event) => {
     setSearchQuery(event.target.value);
   };
 
   const handleCheckboxChange = (event) => {
     setIsChecked(event.target.checked);
+    handleSubmit(event)
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const searchOptions = {
-      query: searchQuery,
-      isShortFilm: isChecked,
-    };
-    onSearch(searchOptions);
+    if (searchQuery < 1) {
+      setInfoTool({ text: '«Нужно ввести ключевое слово».', statusOk: false, opened: true })
+    } else {
+      const searchOptions = {
+        query: searchQuery,
+        isShortFilm: isChecked,
+      };
+      onSearch(searchOptions);
+    }
   };
 
   return (
     <section className='search-form'>
-      <form className='search-form__container' onSubmit={handleSubmit}>
+      <form className='search-form__container' noValidate onSubmit={handleSubmit}>
         <div className='search-form__input-container'>
           <input
-            minLength={1}
             maxLength={24}
             required
             placeholder='Фильм'

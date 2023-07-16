@@ -101,7 +101,8 @@ function Movies({ isloggedIn, setInfoTool, closeInfoTool }) {
         <SearchForm
           onSearch={handleSearch}
           query={query}
-          checkBox={isShortFilm} />
+          checkBox={isShortFilm}
+          setInfoTool={setInfoTool} />
         {isEmptyResult && <span className='empty-result'>Ничего не найдено</span>}
         {preloader && <Preloader />}
         <MoviesCardList
