@@ -25,6 +25,7 @@ function App() {
     function handleTokenCheck() {
       const jwt = localStorage.getItem('jwt');
       const lastPage = localStorage.getItem('lastPage');
+      const currentPath = location.pathname;
       if (jwt) {
         return tokencheck(jwt).then((res) => {
           setIsloggedIn(true)
@@ -34,7 +35,7 @@ function App() {
           });
         })
           .then(() => {
-            navigate(lastPage, { replace: true })
+            navigate(currentPath || lastPage, { replace: true })
           })
           .catch(err => {
             setInfoTool({ text: err, statusOk: true, opened: false })

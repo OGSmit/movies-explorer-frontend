@@ -6,7 +6,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 function Profile({ goExit, isloggedIn, onUserEdit, setInfoTool, closeInfoTool }) {
   const userInfo = useContext(CurrentUserContext);
 
-  const [formValue, setFormValue] = useState({ name: userInfo.data.name, email: userInfo.data.email });
+  const [formValue, setFormValue] = useState({ name: userInfo.data.name || '', email: userInfo.data.email || '' });
   const [formErrorMessage, setFormErrorMessage] = useState({});
   const [gonnaEdit, setGonnaEdit] = useState(false);
   const [isDisabledInput, setIsDisabledInput] = useState(true);

@@ -59,7 +59,12 @@ function MoviesCardList({ movies, isNeedMoreButton, onDelete, onHandleDeleteMovi
   }, []);
 
   const handleLoadMore = () => {
-    setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + NUMBER_OF_MOVIE_DESKTOP);
+    const screenWidth = window.innerWidth;
+      if (screenWidth < MOBILE_SIZE) {
+        setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + NUMBER_OF_MOVIE_MOBILE);
+      } else {
+        setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + NUMBER_OF_MOVIE_DESKTOP);
+      }
   };
 
   const renderedMovies = movies.slice(0, visibleMovies);
