@@ -8,4 +8,4 @@ export const NUMBER_OF_MOVIE_DESKTOP = 7
 
 export const NUMBER_OF_MOVIE_MOBILE = 5
 // знаю что это не мобаил , но у меня только два варианта разрешения
-export const MOBILE_SIZE = 768
+export const MOBILE_SIZE = 600
