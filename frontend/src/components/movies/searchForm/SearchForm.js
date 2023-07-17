@@ -15,7 +15,7 @@ function SearchForm({ onSearch, query, checkBox, setInfoTool }) {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     if (searchQuery < 1) {
       setInfoTool({ text: '«Нужно ввести ключевое слово».', statusOk: false, opened: true })
     } else {
