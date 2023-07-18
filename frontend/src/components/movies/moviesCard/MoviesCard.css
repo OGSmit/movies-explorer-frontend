@@ -49,7 +49,7 @@
 .moviesCard__like {
   width: 14px;
   height: 12px;
-  background-image: url(../../../images/like_icon.svg);
+  background-image: url(../../../images/like_icon_inactive.svg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -58,6 +58,10 @@
   grid-area: like-icon;
   align-self: start;
   margin-top: 10px;
+}
+
+.moviesCard__like_liked {
+  background-image: url(../../../images/like_icon.svg);
 }
 
 .moviesCard__like_delete {
