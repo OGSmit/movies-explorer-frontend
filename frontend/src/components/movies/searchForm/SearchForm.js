@@ -1,29 +1,19 @@
 import React, { useState } from 'react';
 import './SearchForm.css';
 
-function SearchForm({ onSearch, query, checkBox, setInfoTool }) {
-  const [searchQuery, setSearchQuery] = useState(query || '');
-  const [isChecked, setIsChecked] = useState(checkBox || false);
+function SearchForm({ onSearch, query, setInfoTool, onCheckBoxClick, CheckBoxState }) {
+  const [searchQuery, setSearchQuery] = useState(query);
 
   const handleInputChange = (event) => {
     setSearchQuery(event.target.value);
   };
 
-  const handleCheckboxChange = (event) => {
-    setIsChecked(event.target.checked);
-    handleSubmit(event)
-  };
-
   const handleSubmit = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     if (searchQuery < 1) {
       setInfoTool({ text: '«Нужно ввести ключевое слово».', statusOk: false, opened: true })
     } else {
-      const searchOptions = {
-        query: searchQuery,
-        isShortFilm: isChecked,
-      };
-      onSearch(searchOptions);
+      onSearch(searchQuery);
     }
   };
 
@@ -48,8 +38,8 @@ function SearchForm({ onSearch, query, checkBox, setInfoTool }) {
             type='checkbox'
             id='search-form__checkbox'
             className='search-form__checkbox'
-            checked={isChecked}
-            onChange={handleCheckboxChange}
+            checked={CheckBoxState}
+            onChange={onCheckBoxClick}
           ></input>
           <label htmlFor='search-form__checkbox'></label>
           <p className='search-form__checkbox-description'>Короткометражки</p>
@@ -60,3 +50,6 @@ function SearchForm({ onSearch, query, checkBox, setInfoTool }) {
 }
 
 export default SearchForm;
+
+
+

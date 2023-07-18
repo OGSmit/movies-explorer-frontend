@@ -16,6 +16,8 @@ function Movies({ isloggedIn, setInfoTool, closeInfoTool }) {
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [isEmptyResult, setIsEmptyResult] = useState(false);
 
+  const [wannaShort, setWannaShort] = useState(true);
+
   const [preloader, setPreloader] = useState(false);
 
   useEffect(() => {
@@ -45,27 +47,21 @@ function Movies({ isloggedIn, setInfoTool, closeInfoTool }) {
       .finally(() => setPreloader(false))
   }
 
-  const handleSearch = (searchOptions) => {
-    localStorage.setItem('searchOptions', JSON.stringify(searchOptions))
-    const { query, isShortFilm } = searchOptions;
-    const filtered = beatMovies.filter((movie) => {
-      const isIncluded = movie.nameRU.toLowerCase().includes(query.toLowerCase());
-      const isShort = movie.duration <= SHORT_FILM_DURATION;
-      if (isShortFilm) {
-        return isIncluded && isShort;
-      } else {
-        return isIncluded;
-      }
-    });
-
+  const handleSearch = (searchQuery) => {
+    localStorage.setItem('searchQuery', JSON.stringify(searchQuery))
+    const filtered = beatMovies.filter((movie) => movie.nameRU.toLowerCase().includes(searchQuery.toLowerCase()));
     if (filtered.length === 0) {
       setIsEmptyResult(true)
     }
     else {
       setIsEmptyResult(false)
+      setFilteredMovies(filtered);
+      localStorage.setItem('Result', JSON.stringify(filtered));
     }
-    localStorage.setItem('searchResult', JSON.stringify(filtered));
-    setFilteredMovies(filtered);
+  }
+
+  const handleCheckBoxClick = (event) => {
+    setWannaShort(event.target.checked)
   }
 
   async function handleSaveMovie(movie) {
@@ -90,9 +86,7 @@ function Movies({ isloggedIn, setInfoTool, closeInfoTool }) {
     localStorage.setItem('savedMovie', JSON.stringify(savedMovies))
   }, [savedMovies])
 
-  const searchOptions = JSON.parse(localStorage.getItem('searchOptions')) || {};
-  const query = searchOptions.query || '';
-  const isShortFilm = searchOptions.isShortFilm || false;
+  const query = JSON.parse(localStorage.getItem('searchQuery')) || ''
 
   return (
     <>
@@ -100,17 +94,19 @@ function Movies({ isloggedIn, setInfoTool, closeInfoTool }) {
       <main className='main' onClick={closeInfoTool}>
         <SearchForm
           onSearch={handleSearch}
+          CheckBoxState={wannaShort}
           query={query}
-          checkBox={isShortFilm}
+          onCheckBoxClick={handleCheckBoxClick}
           setInfoTool={setInfoTool} />
         {isEmptyResult && <span className='empty-result'>Ничего не найдено</span>}
         {preloader && <Preloader />}
-        <MoviesCardList
-          movies={JSON.parse(localStorage.getItem('searchResult')) || filteredMovies}
+        {!isEmptyResult && <MoviesCardList
+          movies={wannaShort ? JSON.parse(localStorage.getItem('Result')) || filteredMovies
+            :JSON.parse(localStorage.getItem('Result')).filter((movie) => movie.duration < SHORT_FILM_DURATION) || filteredMovies.filter((movie) => movie.duration < SHORT_FILM_DURATION)}
           savedMovies={savedMovies}
           isNeedMoreButton={true}
           onHandleDeleteMovie={handleDeleteMovie}
-          onHandleSaveMovie={handleSaveMovie} />
+          onHandleSaveMovie={handleSaveMovie} />}
       </main>
       <Footer />
     </>
