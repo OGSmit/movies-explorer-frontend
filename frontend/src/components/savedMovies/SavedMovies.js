@@ -18,7 +18,7 @@ function SavedMovies({ isloggedIn, setInfoTool, closeInfoTool }) {
     return mainApi.removeMovie(id)
       .then(res => {
         const updatedFilteredMovies = savedMovies.filter((movie) => movie._id !== res.data._id)
-        setSavedMovies(updatedFilteredMovies)
+        setResult(updatedFilteredMovies)
       })
       .catch(err => setInfoTool({ text: err, statusOk: false, opened: true }))
   }
